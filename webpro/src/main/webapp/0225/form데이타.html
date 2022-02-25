@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+  form{
+	border: 1px solid blue;
+	margin: 30px;
+	padding: 30px;
+	width: 50%;
+  }
+  
+  label {
+  /*  인라인 요소에 크기 조절 
+      display : inline(줄바꿈x, 크기조절x) block(줄바꿈o, 크기조절o)  inline-block > 줄바꿈을 하지 않으면서 크기조절을 할 수 있게 한다
+  */
+  
+    display : inline-block;
+	width: 100px;
+	height: 40px;
+  }
+</style>
+</head>
+
+<body>
+  <h2>form전송- get방식</h2>
+  
+  <form action="form_get.jsp"  method ="get">
+  	 <label>아이디</label> 
+  	 <input type="text" name="id"> <br>
+  	 
+  	 <label>비밀번호</label> 
+  	 <input type="password" name="pass"> <br>
+  	 
+  	 <input type="submit">
+  	
+  </form>
+  
+  
+</body>
+</html>
