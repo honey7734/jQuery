@@ -23,7 +23,33 @@
 </style>
 
 <script type="text/javascript">
-
+  function send() {
+	/*
+	 //폼에서 입력한 id와 pass값을 가져온다
+	
+	var vid = document.getElementById("id").value;
+	var vpass = document.getElementById("pass").value;
+    */
+    
+	//서버로 보내기 - form 객체가 필요
+	//==========get 방식==========
+	//var vform = document.getElementById('ff');
+	//vform.action = "form.jsp?id="+vid+"&pass="+vpass;  //공백 있으면 안됨
+	//vform.method = "get";
+	
+	//vform.submit();
+	
+	
+	
+	//==========post 방식==========
+	
+	var vform = document.getElementById('ff');
+	vform.submit();
+	
+	//그냥 submit하게 될 시 form 태그에 있는 action과 method를 실행하여 post방식으로 전송되어 지는 것이다.
+	//post로 적었으면 post get적었으면 get방식으로 submt됨
+	
+  }
 </script>
 </head>
 
@@ -55,12 +81,15 @@
   </form>
   
   <h1>&lt;input type="button"></h1>
-  <form action="form.jsp"  method ="post">
+  <p>input type = button일 때는 기능을 별도로 부여해야한다</p>
+  <p>기능을 부여할 때는 onclick="함수이름()" 함수호출이 이루어진다</p>
+  <p>java script에서 함수를 정의하고 입력요소의 값을 script에서 처리 후 서버로 전송한다</p> 
+  <form id = "ff" action="form.jsp"  method ="post">
   	 <label>아이디</label> 
-  	 <input type="text" name="id"> <br>
+  	 <input type="text" name="id" id="id"> <br>
   	 
   	 <label>비밀번호</label> 
-  	 <input type="password" name="pass"> <br>
+  	 <input type="password" name="pass" id="pass"> <br>
   	 
   	 <input type="button" value="전송" onclick="send()">
   	
