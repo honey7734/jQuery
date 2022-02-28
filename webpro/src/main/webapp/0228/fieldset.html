@@ -8,6 +8,9 @@
   .gend{
     width: 50px;
   }
+  .ragend{
+   margin-right : 30px; 
+  }
 </style>
 </head>
 <body>
@@ -21,24 +24,32 @@
     <input type="text" name="name" id="name"> <br>
 
     <label for="mail">이메일</label>
-    <input type="text" name="mail" id="mail"> <br>
+    <input type="email" name="mail" id="mail"> <br>
+    
+    <label>전화번호</label>
+    <input type="tel" name="tel" id="tel"><br>
     
     <label>성별</label>
     <input type="radio" name="genger" value="남자" checked>남자
     <input type="radio" name="genger" value="여자">여자
     <br><br>
     
-    <label class="gend">여자</label>
-    <input type="radio" name="genger" value="여자" checked>
+    <fieldset>
+      <legend>성별</legend>
+      <label class="gend">여자</label>
+      <input type="radio" class="ragend" name="ragenger" value="여자" checked>
     
-    <label class="gend">남자</label>
-    <input type="radio" name="genger" value="남자" >
+      <label class="gend">남자</label>
+      <input type="radio" class="ragend" name="ragenger" value="남자" >
+    </fieldset>
   </fieldset>
   
   <fieldset>
     <legend>경력사항</legend>
     
     <label>경력1</label><br>
+    <label>기간</label>
+    <input type="date" name="indate" id="indate"><br>
     <textarea rows="5" cols="30"></textarea>
     <br>
     <label>경력2</label><br>
@@ -56,6 +67,18 @@
     <textarea rows="5" cols="30"></textarea>
     <br>
   </fieldset>
+  
+  
+  <fieldset>
+    <legend>기타항목</legend>
+    <label>신발사이즈</label>
+    <input type="number" min="200" max="300" step="10" value="230" name="size" id="size"><br>
+
+    <label>신발사이즈</label>
+    <input type="range" min="200" max="300" step="10" value="230" name="size" id="size"><br>
+
+  </fieldset>
+  <input type="submit" value="전송">
 </form>
 </body>
 </html>
