@@ -7,10 +7,11 @@
 <script type="text/javascript">
   function proc1(){
 	  //입력한 id와 name을 가져온다
-	  var id;
+	  var idValue = document.getElementById('id').value;
+	  var nameValue = document.getElementById('name').value;
 	  
 	  //적당한 처리를 한다
-	  
+	  alert("이름: " + nameValue + "\n" + "아이디: " + idValue)
 	  //경우에 따라서 전송을 할 수도 있다.
   }
 </script>
@@ -29,7 +30,7 @@
     <input type="image" src="../images/check.png" alt="전송">
     
     <br><br>
-    <!-- <input> input태그는 text가 기본 타입이다 -->
+    <!-- <input> input태그는 text가 기본 타입이다  기능이 없기때문에 사실상 폼태그가 없어도 된다-->
     <input type="button" value="확인" onclick="proc1()"> <!-- 버튼타입은 전송기능이 없다 -->
     <button type="button" onclick="proc1()">확인</button>
   </form>
