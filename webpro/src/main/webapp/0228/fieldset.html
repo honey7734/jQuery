@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+  .gend{
+    width: 50px;
+  }
+</style>
+</head>
+<body>
+<form>
+  <fieldset>
+    <legend>기본 입력</legend>
+    <label for="id">아이디</label>
+    <input type="text" name="id" id="id"> <br>
+
+    <label for="name">이름</label>
+    <input type="text" name="name" id="name"> <br>
+
+    <label for="mail">이메일</label>
+    <input type="text" name="mail" id="mail"> <br>
+    
+    <label>성별</label>
+    <input type="radio" name="genger" value="남자" checked>남자
+    <input type="radio" name="genger" value="여자">여자
+    <br><br>
+    
+    <label class="gend">여자</label>
+    <input type="radio" name="genger" value="여자" checked>
+    
+    <label class="gend">남자</label>
+    <input type="radio" name="genger" value="남자" >
+  </fieldset>
+  
+  <fieldset>
+    <legend>경력사항</legend>
+    
+    <label>경력1</label><br>
+    <textarea rows="5" cols="30"></textarea>
+    <br>
+    <label>경력2</label><br>
+    <textarea rows="5" cols="30"></textarea>
+    <br>
+  </fieldset>
+  
+  <fieldset>
+    <legend>봉사활동</legend>
+    
+    <label>활동1</label><br>
+    <textarea rows="5" cols="30"></textarea>
+    <br>
+    <label>활동2</label><br>
+    <textarea rows="5" cols="30"></textarea>
+    <br>
+  </fieldset>
+</form>
+</body>
+</html>

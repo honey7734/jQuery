@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+  select{
+    width: 200px;
+  }
+</style>
 <script type="text/javascript">
   function subpro() {
 	//alert("왔다");
@@ -31,7 +36,27 @@
     
     <label>소개</label><br>
     <textarea rows="10" cols="50" name="area" id="area"></textarea>
+  	<br>
+
+	<select name="car">
+	  <option value="BMW">BMW</option>
+	  <option value="SM6">SM6</option>
+	  <option value="SONATA">SONATA</option>
+	  <option value="Morning" selected>Morning</option> <!-- selected="selected" 는  selected와같이 생략할 수 있다-->
+	  <option value="아우디">아우디</option>
+	</select>
+	<br>
+	<p>여러가지 선택가능</p> <!-- 컨트롤키를 누르면서 클릭하면 여러개 선택가능 -->
+	<select name="food" multiple size="5">
+	  <option value="떡볶이">떡볶이</option>
+	  <option value="불고기">불고기</option>
+	  <option value="치맥">치맥</option>
+	  <option value="피자">피자</option>
+	  <option value="라면">라면</option>
+	  
+	</select>
   	<br><br>
+  	
   	<input type="button" value="전송" onclick="subpro()">
   	<input type="reset" value="취소">
   </form>
