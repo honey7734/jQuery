@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img{
+  width: 200px;
+  height: 150px;
+}
+img[title]{ /* title이 있는 것을 선택 */
+  border: 5px solid green; 
+}
+img.imc{
+  border: 2px solid red;
+}
+img[class=imc]{
+  border: 8px double blue;
+}
+
+#imd{}
+
+img[id=imd]{}
+input[type=text]{}
+input[type=password]{}
+</style>
+</head>
+<body>
+<p>이미지모음</p>
+<input type="text"><br>
+<input type="password"><br><br>
+<img class="imc" src="../images/Koala.jpg" alt="Koala.jpg" >
+<img class="imc" src="../images/flower-1.jpg" alt="flower-1.jpg">
+<img class="imc" src="../images/spongebob.png" alt="spongebob.png" title="spongebob.png" >
+<img id="imd" src="../images/Penguins.jpg" alt="Penguins.jpg" title="Penguins.jpg" >
+<img src="../images/Tulips.jpg" alt="Tulips.jpg" title="Tulips.jpg" >
+</body>
+</html>
