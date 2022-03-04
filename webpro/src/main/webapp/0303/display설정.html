@@ -12,22 +12,34 @@ div{
   
   display: none;
 }
+
+input[value="감추기"]{
+  display: none;
+}
 </style>
 <script type="text/javascript">
   var vd;
+  var vh;
   function proc() {
 	//div에 접근 검색 -getElementById('dd')
     vd = document.getElementById('dd');
+	
+	//div를 나타나게한다
 	vd.style.display = "block";
+	
+	//감추기버튼도 나타나게한다.
+	vh = document.getElementById('hide');
+	vh.style.display = "inline";
   }
   function aaa() {
 	vd.style.display = "none";
+	vh.style.display = "none";
   }
 </script>
 </head>
 <body>
 <input type="button" value="보이기" onclick="proc()">
-<input type="button" value="감추기" onclick="aaa()">
+<input id="hide" type="button" value="감추기" onclick="aaa()">
 <br><br>
 <div id="dd"></div>
 </body>
