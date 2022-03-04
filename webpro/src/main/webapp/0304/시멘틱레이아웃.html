@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+header, nav, section, footer, article{
+  box-sizing: border-box;  
+  margin-bottom: 5px;
+  border-radius: 30px;
+}
+
+header{
+  background: yellow;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  padding: 5px;
+}
+
+nav{
+  background: pink;
+  width:calc(30%);
+  height: 400px;
+  float: left; 
+  padding-left: 30px;
+  
+}
+section{
+  width:calc(69% - 1px);
+  height: 400px;
+  background: skyblue;
+  float: right; 
+  padding: 40px;
+}
+article{
+  height: 150px;
+  width:98%;
+  margin: 10px auto;
+  background: lime;
+  padding: 10px;
+  border: 2px dotted green;
+
+}
+
+
+footer{
+  background:purple;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  padding: 5px;
+  clear: both;
+  
+} 
+img{
+  width: 150px;
+  height: 150px;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>My Blog Page</h1>
+  <p>시멘틱요소로 만들어진 페이지 입니다.</p>
+</header>
+<nav>
+<h2>Links</h2>
+<ul>
+  <li>w3school</li>
+  <li id="y">Naver</li>
+  <li id="y">Daum</li>
+</ul>
+<figure>
+<img src="../images/spongebob.png">
+<figcaption>스폰지밥</figcaption>
+</figure>
+</nav>
+<section>
+<article>
+  <h2>Semantic Tags</h2>
+  <p>시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다. 레이아웃을 만들때 쓰는 것, 의미가 있는 요소라면 div보다는 시멘틱 태그를 사용해준다.</p>
+</article>
+<article>
+  <h2>div와 span</h2>
+  <p>div은 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다. span요소는 인라인 요소로서 텍스트를 위한 컨테이너로 사용할 수 있다.</p>  
+</article>
+</section>
+
+<footer>Copyright (c)2019Hong</footer>
+</body>
+</html>
