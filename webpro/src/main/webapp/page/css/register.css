@@ -1,0 +1,12 @@
+label {
+  display: inline-block;
+  width: 130px;
+}
+
+fieldset {
+  margin: 30px auto;
+}
+
+button {
+  width: 300px;
+}
