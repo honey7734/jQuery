@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+ function proc() {
+	
+	 var in1 = parseInt(prompt("정수1 입력.."));
+	 var in2 = parseInt(prompt("정수2 입력.."));
+	 
+ 	 var hap = in1 + in2;
+/*	 
+	 str =  "입력 1 : " + in1 + "\n";
+	 str += "입력 2 : " + in2 + "\n";
+	 str += "덧셈결과 : " + hap;
+	 
+	 alert(str);
+	 
+	 console.log(str); */
+	
+	 str =  "입력 1 : " + in1 + "<br>";
+	 str += "입력 2 : " + in2 + "<br>";
+	 str += "덧셈결과 : " + hap;
+	 
+	 // div를 검색
+	 var vd = document.querySelector("div");
+	 vd.innerHTML = str;
+ }
+ 
+ function calc(abc) {
+	
+	 //두 수를 입력
+	 su1 =  parseInt(prompt("수1 입력.."));
+	 su2 =  parseInt(prompt("수1 입력.."));
+	 //abc의 값(+,-,*,%)을 비교 - if, switch
+	if(abc == "+"){
+		result = su1 + su2
+	}else if(abc == "-"){
+		result = su1 - su2
+		
+	}else if(abc == "*"){
+		result = su1 * su2
+		
+	}else if(abc == "/"){
+		result = su1 / su2
+		
+	}
+	 //각각을 계산
+	 
+	 //id = res인 곳에 출력
+	 
+}
+</script>
+</head>
+<body>
+<pre>
+버튼을 클릭하면 두개의 수를 입력한다 (prompt이용)
+prompt함수의 리턴결과값을 string이다.
+
+두 수를 더해서 출력한다 - div요소에 
+더하기를 위해서 정수로 변환이 필요 - parseInt()
+
+요소검색 - es6 - 단수로 검색 -
+여러개가 있어도 첫번째 요소만 검색
+document.querySelector("#aa")
+document.querySelector(".bb")
+document.querySelector("div")
+</pre>
+<input type="button" value="확인" onclick="proc()">
+<br>
+<div></div> 
+<hr>
+<input type="button" value="+" onclick="calc('+')">
+<input type="button" value="-" onclick="calc('-')">
+<input type="button" value="*" onclick="calc('*')">
+<input type="button" value="/" onclick="calc('/')">
+<div id="res"></div>
+
+</body>
+</html>
