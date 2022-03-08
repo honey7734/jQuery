@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel ="stylesheet" href="../css/public.css">
+
+<script type="text/javascript">
+function proc1() {
+	// 두 수와 연산자 입력 - 
+	su1 = parseInt(prompt('수1 입력'));
+	su2 = parseInt(prompt('수2 입력'));
+	opr = prompt('연산자 입력');
+	
+	//opr비교 - 연산
+	switch (opr) {
+	case '+':
+		result = su1 + su2;
+		break;
+	case '-':
+		result = su1 - su2;
+		break;
+	case '*':
+		result = su1 * su2;
+		break;
+	case '/':
+		result = su1 / su2;
+		break;
+	}
+	
+	str = `수1 : ${su1} <br>`;
+	str += `수2 : ${su2} <br>`;
+	str += `${su1} ${opr} ${su2} = ${result}`;
+	
+	//id=result1검색 - 출력 - innerHTML
+	document.getElementById('result1').innerHTML = str;
+}
+
+function proc2() {
+	// 입력
+	in1 = prompt('첫번째 사람의 가위 바위 보를 입력하세요');
+	in2 = prompt('두번째 사람의 가위 바위 보를 입력하세요');
+	
+	if(in1 == in2){
+		result = '비겼습니다';
+	}else if(in1 == '가위' && in2 == '보' || in1 == '바위' && in2 =='가위' || in1 == '보' && in2 =='바위'){
+		result = '첫번째 사람 승!!!';
+	}else if(in2 == '가위' && in1 == '보' || in2 == '바위' && in1 =='가위' || in2 == '보' && in1 =='바위'){
+		result = '두번째 사람 승!!!';
+	}
+	
+	str = `첫번째 사람 : ${in1} <br>`;
+	str += `두번째 사람 : ${in2} <br>`;
+	str += `결과: ${result} <br>`;
+	
+	document.getElementById('result2').innerHTML = str;
+}
+</script>
+</head>
+<body>
+<div class="box">
+  <pre>
+  두 수와 연산자를 입력 받는다 - prompt
+  결과를 출력한다-innerHTML - id = result1
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  <br>
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+  <pre>
+  두 사람의 가위바위보를 각각 입력한다 - prompt
+  결과를 출력한다-innerHTML - id = result2
+  </pre>
+  <input type="button" value="확인" onclick="proc2()">
+  <br>
+  <div id="result2"></div>
+</div>
+</body>
+</html>

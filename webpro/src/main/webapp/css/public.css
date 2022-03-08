@@ -2,14 +2,17 @@
 
 div{
 	width: 100%;
-    height: 200px;
+    height: auto;
     border: 1px solid red;
-    background: yellow;
+/*     background: yellow; */
+    background-image: linear-gradient(45deg, yellow, white) ;
+    margin: 3px;
 }
 
 pre{
 	border: 1px dotted blue;
-	background: skyblue;
+/* 	background: skyblue; */
+    background-image: linear-gradient(skyblue, white);
 	margin: 10px;
 	padding: 10px;
 	font-size: 1.2em;
@@ -30,4 +33,21 @@ label {
     display : inline-block;
 	width: 100px;
 	height: 40px;
+}
+
+.box div{
+	margin: 10px;
+	padding: 5px;
+	border: 1px dotted orange;
+	height: auto;
+	background: #f3dab2;
+}
+
+.box input[type=button]{
+	margin: 5px 50px;
+	width: 60px;
+	height: 40px;
+	background: blue;
+	color: white;
+	border-radius: 20px;
 }

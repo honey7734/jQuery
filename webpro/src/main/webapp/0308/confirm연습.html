@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+function proc1() {
+	while(true){
+		
+	dan = prompt("단수를 입력 - 구구단 출력");
+	
+	//dan이 0이면 종료한다
+	if(dan == 0) break;
+	
+	str += `**** ${dan} ****<br>`;
+	
+	for(let i=1; i<10; i++){
+		str += `${dan} * ${i} = ${dan*i}<br>`;	
+	}
+	
+	document.querySelector('#result1').innerHTML = str;
+	}
+}
+function proc2() {
+	var str = "";
+	while (true) {
+		dan = prompt("단수를 입력");
+		
+		str += `<br>**** ${dan} ****<br>`;
+		
+		for(let i=1; i<10; i++){
+			str += `${dan} * ${i} = ${dan*i}<br>`;	
+		}
+		
+		yesno = confirm("계속할래???");
+		
+		if(!yesno)break;
+		
+	}
+	
+	document.querySelector('#result2').innerHTML = str;
+}
+</script>
+</head>
+<body>
+<div class="box">
+  <pre>
+  단수를 입력한다 - prompt
+  반복적으로 입력을 하면서 0이 입력되면 종료한다
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  <div id="result1"></div>
+</div>
+<div class="box">
+  <pre>
+  confirm(): 실행도중 클라이언트의 대답을 요구할 때 사용
+  리턴 결과값은 true, false
+  </pre>
+  <input type="button" value="확인" onclick="proc2()">
+  <div id="result2"></div>
+</div>
+</body>
+</html>

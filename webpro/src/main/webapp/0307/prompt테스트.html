@@ -49,7 +49,18 @@
 	}
 	 //각각을 계산
 	 
-	 //id = res인 곳에 출력
+	 //id = res인 곳에 출력 - 검색
+// 	 str = "입력1 : " + su1 + "<br>";
+// 	 str += "입력2 : " + su2 +"<br>";
+	 
+// 	 str += su1 + abc + su2 + "=" + result + "<br>";
+	 
+	 
+	 str = `입력1 : ${su1}  <br>`;
+	 str += `입력2 : ${su2}  <br>`;
+	 str += `${su1} ${abc} ${su2} = ${result} <br>`;
+	 document.getElementById('res').innerHTML = str;
+	 document.querySelector('#res').innerHTML = str;
 	 
 }
 </script>
