@@ -8,3 +8,14 @@ button {
   width: 300px;
 }
 
+input {
+	border: 1px solid black;
+	width: 130px;
+}
+
+fieldset {
+	margin: 50px auto;
+	width: 800px;
+	height: 500px;
+	padding: 50px auto;
+}
