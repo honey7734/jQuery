@@ -6,16 +6,28 @@ label {
 
 button {
   width: 300px;
+  margin-top: 20px;
+  margin-left: 50px;
 }
 
 input {
-	border: 1px solid black;
-	width: 130px;
+	width: 300px;
+}
+
+input[value=중복검사]{
+	width:100px;
+}
+input[type=radio]{
+	width:20px;
+}
+h1{
+	text-align: center;
 }
 
 fieldset {
-	margin: 50px auto;
-	width: 800px;
-	height: 500px;
-	padding: 50px auto;
+	margin-top:50px;
+	width: 750px;
+	padding: 20px;
+	margin: auto;
+	
 }
