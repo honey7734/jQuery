@@ -48,3 +48,15 @@ proc3 = () =>{
 	
 	document.querySelector('#result3').innerHTML = res;
 }
+
+proc4 = () =>{
+	var str = "";
+	for(i=1; i<=10; i++){
+		for(k=1; k<=10; k++){
+			if((i+k)%3 != 0) continue;
+			str += `${i} ${k} <br>`;
+		}
+	}
+	
+	document.querySelector('#result4').innerHTML = str;
+}
