@@ -76,8 +76,8 @@ function proc3() {
 		rnd = parseInt(Math.random()*100 + 1);
 		
 		idx = arr.indexOf(rnd)
-		
 		if(idx == -1) arr.push(rnd);
+		
 		if(arr.length >= 5) break;
 	}
 	document.querySelector('#result3').innerHTML += arr + "<br>" ;
