@@ -60,3 +60,37 @@ proc4 = () =>{
 	
 	document.querySelector('#result4').innerHTML = str;
 }
+
+proc5 = () =>{
+	var str = "";
+	for(i=1; i<=100; i++){
+		if(i % 2 == 0 && i % 3 == 0) str += `${i},`;
+	}
+	
+	document.querySelector('#result5').innerHTML = str;
+}
+
+proc6 =() =>{
+	
+	grth = "합이 100이상인 값들 <br>";  // 두 수의 합이 100보다 큰 값들 저장
+	leth = "합이 100미만인 값들 <br>";  // 두 수의 합이 100미만인  값들 저장
+	
+	while(true){
+		//입력
+		su1 =  parseInt(prompt('첫번째 수를 입력하세요'));
+		su2 =  parseInt(prompt('두번째 수를 입력하세요'));
+		
+		if(su1 == 0 && su2 == 0) break;
+		
+		// 두 수의 합 구하기
+		hap = su1 + su2;
+		
+		if(hap >=100) grth += `${su1} ${su2} <br>`;
+		if(hap < 100)  leth += `${su1} ${su2} <br>`;
+		
+		//출력
+		str = grth + "<br>" + leth;
+		document.querySelector('#result6').innerHTML = str;
+		
+	}
+}
