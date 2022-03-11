@@ -21,7 +21,7 @@ function print(id) {
 		str += `이름 : ${circle.name} <br>`;
 	}
 	str += `반지름 : ${circle.rad} <br>`;
-	str += `면적 : ${circle.getArea()} <br>`;
+	str += `면적 : ${circle.getArea().toFixed(2)} <br>`;
 	str += `둘레 : ${circle.getCircle()} <br>`;
 	
 	document.querySelector(id).innerHTML = str;

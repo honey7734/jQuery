@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+	//객체 정의
+	function Rect(width, height) {
+		this.width = width;
+		this.height = height;
+		
+		this.getArea = function () {
+			return this.width * this.height;
+		}
+		this.getCircum = function() {
+			return (this.width + this.height) * 2;
+		}
+	}
+	
+	function proc1() {
+		// 객체생성 - new
+		var rect = new Rect(5,7);
+		
+		// 이름입력
+		rect.name = prompt('이름입력');
+		print(rect, '#result1');
+	}
+	
+	function print(r, out) {
+		// 출력
+		 /* 이름 :
+			가로 : 
+			세로 : 
+			면적 : 
+			둘레 : */
+		str  = `이름 : ${r.name} <br>`;
+		str += `가로 : ${r.width} <br>`;
+		str += `세로 : ${r.height} <br>`;
+		str += `면적 : ${r.getArea()} <br>`;
+		str += `둘레 : ${r.getCircum()} <br>`;
+			
+		document.querySelector(out).innerHTML = str;	
+	}
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  
+  <div id="result1"></div>
+</div>
+</body>
+</html>
