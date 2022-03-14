@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+#out1{
+  font-size: 2.0em;
+  font-weight: bold;
+}
+</style>
+<script type="text/javascript">
+  var today = new Date();
+  
+  window.setInterval(function(){
+	  
+	var today = new Date();
+	
+	out = today.toLocaleString()
+	document.getElementById('out1').innerHTML = out;
+	
+  },1000)
+  
+  function proc1() {
+	date1 = new Date(20000);
+	date2 = new Date("2000,8,15");
+	date3 = new Date(2000, 8-1, 15, 13, 20, 45);
+	
+	str = "today : " + today + "<br>";
+	str += date1 + "<br>";
+	str += date2 + "<br>";
+	str += date3 + "<br>";
+	
+	
+	str += "<br><br>";
+	str += today.toLocaleString() + "<br>";
+	str += date1.toLocaleString() + "<br>";
+	str += date2.toLocaleDateString() + "<br>";
+	str += date3.toLocaleTimeString() + "<br>";
+	
+	document.getElementById('result1').innerHTML = str;
+	
+}
+  function proc2() {
+	day = today.getDay();
+	
+	switch (day) {
+	case 0:
+		res = "일요일";
+		break;
+	case 1:
+		res = "월요일";
+		break;
+	case 2:
+		res = "화요일";
+		break;
+	case 3:
+		res = "수요일";
+		break;
+	case 4:
+		res = "목요일";
+		break;
+	case 5:
+		res = "금요일";
+		break;
+	case 6:
+		res = "토요일";
+		break;
+	}
+	
+	str = "오늘은" + today.toLocaleString() + "<br>";
+	str += res + "입니다";
+	
+	document.getElementById('result2').innerHTML = str;
+  }
+  function proc3() {
+	days = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+	
+	str = "오늘은" + today.toLocaleString() + "<br>";
+	str += days[today.getDay()] +"입니다.";
+	
+	
+	document.getElementById('result3').innerHTML = str;
+}
+  function proc4() {
+	bday = new Date("2000,10,1");
+	bday = new Date(2000,10-1,1);
+	
+	times = today.getTime() - bday.getTime();
+	console.log(today.getTime(), bday.getTime());
+	console.log(times);
+	
+	days = times/ 1000 / 60 / 60 / 24;
+	
+	str = "오늘 : " + today.toLocaleString() + "<br>";
+	str += "생일 : " + bday.toLocaleString() + "<br>";
+	str += "살아온날 : " + days + "<br>";
+	str += "살아온 년수 : " + days / 365;
+	document.getElementById('result4').innerHTML = str;
+}
+  function proc5() {
+	//오늘을 기준으로 100일 후 
+	//today.getTime() + 100일의 getTime
+	times = today.getTime() + 100 * 24 * 60 * 60 * 1000;
+	newday = new Date(times);
+	
+	str = "오늘 : " + today.toLocaleString() + "<br>";
+	str += "100일 후 : " + newday.toLocaleString() + "<br>";
+	
+	document.getElementById('result5').innerHTML = str;
+	
+}
+  function proc6() {
+	xmas = new Date("2022.12.25");
+	
+	//xmas의 getTime - today.getTime
+	times = xmas.getTime() - today.getTime();
+	
+	//times의 실제 날수
+	//times = times / 1000 / 60 / 60 / 24 ;
+	
+	str = "오늘 : " + today.toLocaleString() + "<br>";
+	str += "크리스마스까지 " + times / 1000 / 60 / 60 / 24  + "일 남았습니다<br>";
+	
+	document.getElementById('result6').innerHTML = str;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre id="out1">
+    
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  
+  <div id="result1"></div>
+</div>
+<div class="box">
+  <pre>
+   요일 구하기 - getDay() : 0~6의 값을 리턴한다.
+  </pre>
+  <input type="button" value="확인" onclick="proc2()">
+  
+  <div id="result2"></div>
+</div>
+<div class="box">
+  <pre>
+   요일 구하기 - getDay() : 0~6의 값을 리턴한다.
+   배열을 이용
+  </pre>
+  <input type="button" value="확인" onclick="proc3()">
+  
+  <div id="result3"></div>
+</div>
+<div class="box">
+  <pre>
+   날짜수 구하기 - getTime() millisecond의 값을 리턴한다
+   실제 초를 구하기 위해서는 1000으로 나눈다
+  </pre>
+  <input type="button" value="확인" onclick="proc4()">
+  
+  <div id="result4"></div>
+</div>
+<div class="box">
+  <pre>
+   날짜수 구하기 - getTime() millisecond의 값을 리턴한다
+   실제 초를 구하기 위해서는 1000으로 나눈다
+   
+   
+   100일 후의 날짜 구하기
+  </pre>
+  <input type="button" value="확인" onclick="proc5()">
+  
+  <div id="result5"></div>
+</div>
+<div class="box">
+  <pre>
+   날짜수 구하기 - getTime() millisecond의 값을 리턴한다
+   실제 초를 구하기 위해서는 1000으로 나눈다
+   
+   
+  크리스마스까지 남은 날 수 구하기
+  </pre>
+  <input type="button" value="확인" onclick="proc6()">
+  
+  <div id="result6"></div>
+</div>
+</body>
+</html>
