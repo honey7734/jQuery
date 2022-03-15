@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+function proc1() {
+	//주민번호 입력 - 110326-4123456
+	input = prompt('주민번호를 입력하세요');
+	
+	//추출하기 - 11, 03, 26
+	yy = input.slice(0,2);
+	mm = input.substring(2,4);
+	dd = input.slice(4,6);
+	
+	gend = input.substr(7,1);
+	//태어난 년도 구하기 1911 vs 2011
+	if(gend > 2){
+		byear = 20 + yy;
+		
+	}else{
+		byear = 19 + yy;
+	}
+		
+	//생년월일 2011년 3월 26일 형태 구성
+	
+	birth = byear + "년" + mm + "월" + dd + "일";
+	
+	//성별구하기
+	if(gend % 2 == 0){
+		gender = "여자" 
+	}else{
+		gender = "남자"
+	}
+		
+	//나이 구하기 - 현재년도 - 태어난 년도
+	today = new Date();
+	age = today.getFullYear()-byear;
+	
+	//출력
+	//주민번호 - 110326-4*****
+	//생년월일 - 2011년 3월 26일
+	//성별
+	//나이
+	
+	out = "주민번호 : " + input.substr(0,8) +"******<br>";
+	out += " 생년월일 : " + birth + "<br>";
+	out += "성별 : " + gender + "<br>";
+	out += "나이 : " + age;
+	
+	document.getElementById('result1').innerHTML = out;
+}
+function proc2() {
+	hap = 0;
+	//곱하는값
+	multi = "234567892345";	
+	// 입력
+	input = prompt('주민번호를 입력하세요');
+	code = input.replace("-","")
+	//반복문 이용 - 각 한자리씩 추출
+	for(i=0; i<multi.length; i++){
+		hap += code.substr(i,1)*multi.substr(i,1);
+	}
+	
+	//hap을 11로 나눈 나머지 구하고 11에서 뺀다
+	result = 11 - (hap % 11) ;
+	
+	if(result == 10) result = 0;
+	if(result == 11) result = 1;
+	
+	//출력
+	out = "주민번호 : " + input.substr(0,8) +"******<br>";
+	
+	if(result ==  code.substr(12,1)){
+		out += "진짜"	
+	}else{
+		out += "가짜"
+	}
+	
+	document.getElementById('result2').innerHTML = out;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    주문등록 번호를 입력받아
+    생년월일과 성별을 출력하는 프로그램
+    
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+  <pre>
+    주문등록 번호를 입력받아
+    주민번호의 유효성을 검사하는 프로그램
+    
+  </pre>
+  <input type="button" value="확인" onclick="proc2()">
+  
+  <div id="result2"></div>
+</div>
+
+</body>
+</html>

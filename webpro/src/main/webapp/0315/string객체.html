@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+.box input[type=button]{
+	margin: 5px;
+	width : 100px;
+}
+</style>
+<script type="text/javascript">
+str = "가aA 나bB 우리 나라 좋은 나라 대한 민국 만세";
+//unicode : a:97  A:65  0:48
+function proc1() {
+	ch1 = str.charAt(0);
+	ch2 = str.charAt(1);
+	ch3 = str.charAt(2);
+	console.log(ch1,ch2,ch3);
+	
+	ch4 = str.charAt(4);
+	ch5 = str.charAt(5);
+	ch6 = str.charAt(6);
+	console.log(ch4,ch5,ch6);
+	
+	ca8 = str.charAt(8);
+	out = str + "<br>";
+	out += "str.charAt(8) : " + ca8 + "<br>";
+	document.getElementById('result1').innerHTML = out;
+}
+function proc2() {
+	ch1 = str.charCodeAt(0);
+	ch2 = str.charCodeAt(1);
+	ch3 = str.charCodeAt(2);
+	console.log(ch1,ch2,ch3);
+	
+	ch4 = str.charCodeAt(4);
+	ch5 = str.charCodeAt(5);
+	ch6 = str.charCodeAt(6);
+	console.log(ch4,ch5,ch6);
+	
+	ca8 = str.charCodeAt(8);
+	out = str + "<br>";
+	out += "str.charCodeAt(8) : " + ca8 + "<br>";
+	document.getElementById('result2').innerHTML = out;
+}
+function proc3() {
+	invalue = document.getElementById('intext').value;
+	
+	//길이
+	//alert("문자길이 : " + invalue.length);
+	
+	out = "문자길이 : " + invalue.length;
+	
+	//공백제거
+	invalue = invalue.trim();
+	
+	out += "공백제거 trim()후 : " + invalue.length + "<br>";
+	
+	document.getElementById('result3').innerHTML = out;
+}
+function proc4() {
+	invalue = document.getElementById('intext').value;
+	
+	invalue = invalue.trim();
+	
+	//5~10길이체크
+	if(invalue.length < 5 || invalue.length > 10){
+		alert("길이는 5~10사이로 입력하세요");
+		return false;
+	}
+	
+	alert("정상데이터 입니다.");
+}
+function proc5() {
+	a1 = str.substring(2,9);
+	
+	out = str + "<br>";
+	out += "str.substring(2,9) : " + a1 + "<br>";
+	
+	document.getElementById('result5').innerHTML = out;
+}
+
+function proc6() {
+	
+	//문자 1입력, 문자2입력 우 , 대
+	//입력받은 문자 사이의 문자를 추출하라
+	in1 = prompt('문자1입력').trim();
+	in2 = prompt('문자2입력').trim();
+	
+	//입력받은 문자의 위치 얻기
+	idx1 = str.indexOf(in1);
+	idx2 = str.indexOf(in2);
+	
+	//idx1이 idx2번보다 작은값이어야하고 
+	//두개의 값이 -1이 아니여야한다
+	
+//	if(idx1 < idx2 && idx1 != -1 && idx2 != -1){
+//		return;
+//	}
+	
+	//문자 추출 - substring(), slice()
+	sub1 = str.slice(idx1,idx2+1);
+	
+	//출력
+	out = str + "<br>";
+	out += "첫번째 문자 : " + in1 + "(인덱스:" + idx1 + ") " + "<br>";
+	out += "두번째 문자 : " + in2 + "(인덱스:" + idx2 + ") " + "<br>";
+	out += "str.slice(idx1, idx2+1) : " + sub1 + "<br>";
+	document.getElementById('result6').innerHTML = out;
+}
+function proc7() {
+	//문자 1 입력, 갯수 입력
+	in1 = prompt('문자1 입력');
+	len = parseInt(prompt('갯수 입력'));
+	
+	//문자1의 위치 얻기
+	idx = str.indexOf(in1);
+	
+	res = str.substr(idx, len);
+	
+	out = str + "<br>";
+	out += "첫번째 문자 : " + in1 + "(인덱스 :" + idx + ")<br>";
+	out += "추출할 문자의 갯수 : " + len + "<br>";
+	out += "str.substr(" + idx +"," +len+") : " + res;
+	
+	document.getElementById('result7').innerHTML = out;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    str = "우리 나라 좋은 나라 대한 민국 만세";
+    charAt(index) : index위치의 문자를 얻는다
+    charCodeAt(index) : index위치의 unicode값을 얻는다.
+  </pre>
+  <input type="button" value="charAt" onclick="proc1()">
+  <input type="button" value="charCodeAt" onclick="proc2()">
+  
+  <div id="result1"></div>
+  <div id="result2"></div>
+</div>
+<div class="box">
+  <pre>
+    trim() : 앞뒤공백을 제거한다
+    입력값의 길이를 5~10사이로 입력받도록 한다
+  </pre>
+  <label>입력</label>
+  <input type="text" id="intext"><br>
+  <input type="button" value="trim" onclick="proc3()">
+  <input type="button" value="trim" onclick="proc4()">
+  
+  <div id="result3"></div>
+</div>
+
+<div class="box">
+  <pre>
+    추출하기
+    substring(start,end) : start~end-1까지 추출
+    slice(start,end) : start~end-1까지 추출
+    substr(start,length) : start에서 시작 length만큼 추출
+  </pre>
+  <label>입력</label>
+  <input type="text" id="intext"><br>
+  <input type="button" value="substring" onclick="proc5()">
+  <input type="button" value="slice" onclick="proc6()">
+  <input type="button" value="substr" onclick="proc7()">
+  
+  <div id="result5"></div>
+  <div id="result6"></div>
+  <div id="result7"></div>
+</div>
+</body>
+</html>
