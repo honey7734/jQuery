@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+function proc1() {
+	
+	arr = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+	
+	today = new Date();
+	date = today.toLocaleDateString();
+	day = arr[today.getDay()];
+	
+	date = date + "&nbsp;&nbsp;&nbsp;" + day;
+	
+	//window.open("https://www.naver.com", "대한민국", "width=400 height=500px");
+	win = window.open("sub.html","subwindow","width=500 height=400 left=100 top=100")
+	//win.moveTo(200, 300);
+	//win.moveTo(300, 400);
+	//win.moveBy(300, 400);
+	
+	//자식창에 date값을 출력한다
+	win.onload = function() {
+		win.document.getElementById('result1').innerHTML = date
+	}
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    window : BOM의 최상위 객체
+    메소드 호출시 window는 생략가능
+
+	window.open()
+	window.close()
+	window.alert()
+	window.prompt()
+	window.confirm()
+	
+  </pre>
+  
+	<input type="button" value="확인" onclick="proc1()">
+  	<div id="result1"></div>
+</div>
+</body>
+</html>

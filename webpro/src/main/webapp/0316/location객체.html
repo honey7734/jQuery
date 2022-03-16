@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+function proc1() {
+	out = "host = " + location.host + "<br>";
+	out += "hostname = " + location.hostname + "<br>";
+	out += "port = " + location.port + "<br>";
+	out += "href = " + location.href + "<br>";
+	
+	document.getElementById('result1').innerHTML = out;
+}
+function proc2() {
+	location.href="window객체.html";
+	//서버내에서 실행한 결과값을 가지는 페이지
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    location객체 
+    url정보를 얻는 객체
+    host : hostname + port
+    hostname : 서버이름
+    port : 포트번호
+    href : 전체 URL로 페이지 설정
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+  <pre>
+    버튼을 클릭하면
+    location.href="페이지이름"을 이용하여 이동한다
+    서버내에서 처리 후 서버페이지로 이동,
+    클라이언트에 보여지는 페이지 이동
+    
+    a href="페이지이름" 서버프로그램 수행없이
+    단순히 클라이언트에 보여지는 페이지 이동
+  </pre>
+  <a href="math객체.html">Math객체</a>
+  <input type="button" value="확인" onclick="proc2()">
+  
+  <div id="result2"></div>
+</div>
+
+</body>
+</html>

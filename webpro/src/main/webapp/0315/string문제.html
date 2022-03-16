@@ -54,13 +54,13 @@ function proc1() {
 function proc2() {
 	hap = 0;
 	//곱하는값
-	multi = "234567892345";	
+	//multi = "234567892345";	
 	// 입력
 	input = prompt('주민번호를 입력하세요');
 	code = input.replace("-","")
 	//반복문 이용 - 각 한자리씩 추출
-	for(i=0; i<multi.length; i++){
-		hap += code.substr(i,1)*multi.substr(i,1);
+	for(i=0; i<code.length-1; i++){
+		hap += code.substr(i,1) * (i%8 +2);
 	}
 	
 	//hap을 11로 나눈 나머지 구하고 11에서 뺀다
