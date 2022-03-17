@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<script type="text/javascript">
+
+	arr = ["Hello", "Bye", "Thank you", "JavaScript", "jQuery", "무궁화 꽃이 피었습니다"];
+	
+function proc1() {
+	
+	
+	ran = parseInt(Math.random() * arr.length);
+	
+	//선택된 문자로 텍스트노드 생성
+	vtext = document.createTextNode(arr[ran]);
+	
+	//p태그 생성
+	vp = document.createElement('p');
+	
+	//택스트 노드를 p태그에 자식으로 추가
+	vp.appendChild(vtext);
+	
+	//result1에 p태그를 자식으로 추가
+	document.getElementById('result1').appendChild(vp);
+}
+
+function proc2() {
+	vr = document.getElementById('result1');
+	del = vr.lastChild;
+	vr.removeChild(del);
+}
+
+function proc3() {
+	
+	ran = parseInt(Math.random() * arr.length);
+	
+	//선택된 문자로 텍스트노드 생성
+	vtext = document.createTextNode(arr[ran]);
+	
+	//버튼 생성
+	vin = document.createElement('input');
+	
+	vin.type = "button";
+	vin.value = "삭제";
+	vin.onclick = function() {
+		this.parentNode.remove();
+	};
+	
+	//p태그 생성
+	vp = document.createElement('p');
+	
+	//택스트 노드를 p태그에 자식으로 추가
+	vp.appendChild(vtext);
+	vp.appendChild(vin);
+	
+	//result1에 p태그를 자식으로 추가
+	document.getElementById('result3').appendChild(vp);
+}
+
+
+</script>
+</head>
+<body>
+
+<div class="box">
+	<pre>
+	버튼 클릭시 랜덤으로 문자열을 발생한다.
+	문자열로 textNode를 생성한다.
+	p태그를 생성한다.
+	p태그에 textNode를 자식으로 추가한다.
+	result1에 p태그를 자식으로 추가한다.
+	</pre>
+
+	<input type="button" value="추가" onclick="proc1()">
+	<input type="button" value="삭제" onclick="proc2()"><br>
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+	<pre>
+	버튼 클릭시 랜덤으로 문자열을 발생한다.
+	문자열로 textNode를 생성한다.
+	button을 생성 - input태그 생성 - 타입 설정, 밸류 성정, 온클릭 설정
+	p태그를 생성한다.
+	p태그에 textNode와 버튼을 자식으로 추가한다.
+	result3에 p태그를 자식으로 추가한다.
+	</pre>
+
+	<input type="button" value="추가삭제" onclick="proc3()"><br>
+	<div id="result3"></div>
+</div>
+
+</body>
+</html>

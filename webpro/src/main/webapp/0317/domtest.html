@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+function proc1() {
+	ulist = document.getElementsByTagName('ul')[0];
+	
+	allItems = ulist.getElementsByTagName('li');
+	
+	str = "";
+	for(i=0; i < allItems.length; i++){
+		str += allItems[i].firstChild.data + "<br>";
+	}
+	
+// 	alert(str);
+	document.getElementById('result1').innerHTML = str;
+}
+
+function proc2() {
+	ulist = document.getElementsByTagName('ul')[1];
+	
+	allItems = ulist.getElementsByTagName('li');
+	
+	for(i=0; i < allItems.length; i++){
+		//li값
+		str = allItems[i].firstChild.data;
+		
+		//이미지 생성
+		vimg = document.createElement('img');
+		vimg.src = "../images/" + str + ".jpg";
+		vimg.alt = str;
+		
+		allItems[i].appendChild(vimg);
+	}
+	
+}
+
+function proc3(li) {
+	
+	//li값
+	str = li.firstChild.data;
+	
+	//이미지 생성
+	vimg = document.createElement('img');
+	vimg.src = "../images/" + str + ".jpg";
+	vimg.alt = str;
+	vimg.style.borderRadius = "100%";
+	
+	li.appendChild(vimg);
+	
+}
+
+window.onload = function() {
+	vlis = document.getElementsByClassName('eli');
+	
+	//이벤트 일괄 등록
+	for(i=0; i < vlis.length; i++){
+		vlis[i].addEventListener('click', addImage);
+		//각 class=eli에서 click 이벤트가 발생하면 addImage함수를 호출한다.
+		//함수가 파라미터로 들어갈 경우는 ()를 붙이지 않는다. - this가 자동으로 넘어간다.
+	}
+}
+
+function addImage() {
+	//this는 자동으로 넘어와서 사용가능 - 클릭한 대상의 객체
+	str = this.firstChild.data;
+	
+
+	//이미지 생성
+	vimg = document.createElement('img');
+	vimg.src = "../images/" + str + ".jpg";
+	vimg.alt = str;
+	vimg.style.borderRadius = "100%";
+	
+	this.appendChild(vimg);
+}
+</script>
+
+<style type="text/css">
+img{
+	width: 80px;
+	height: 80px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+	<pre>
+	dom 트리를 이용해서 각 요소에 접근
+	li의 text문자를 추출
+	</pre>
+	
+	<ul>
+		<li>홍길동</li>
+		<li>개나리</li>
+		<li>진달래</li>
+		<li>무궁화</li>
+	</ul>
+	
+	<input type="button" value="확인" onclick="proc1()"><br>
+	<div id="result1"></div>
+</div>
+
+<div class="box">
+	<pre>
+	dom 트리를 이용해서 각 요소에 접근
+	버튼을 클릭하면
+	li의 text문자를 추출하여 이미지를 생성하고 추가
+	</pre>
+	
+	<ul>
+		<li>국화</li>
+		<li>대나무숲</li>
+		<li>사자</li>
+		<li>아메리카노</li>
+	</ul>
+	
+	<input type="button" value="확인" onclick="proc2()"><br>
+</div>
+
+<div class="box">
+	<pre>
+	dom 트리를 이용해서 각 요소에 접근
+	각 li 요소를 클릭하면 클릭한 li의 text문자를 추출하여 이미지를 생성하고 추가
+	</pre>
+	
+	<ul>
+		<li onclick="proc3(this)">국화</li>
+		<li onclick="proc3(this)">대나무숲</li>
+		<li onclick="proc3(this)">사자</li>
+		<li onclick="proc3(this)">아메리카노</li>
+	</ul>
+	
+</div>
+
+<div class="box">
+	<pre>
+	dom 트리를 이용해서 각 요소에 접근
+	각 li 요소를 클릭하면 클릭한 li의 text문자를 추출하여 이미지를 생성하고 추가
+	
+	이벤트방식 - 일괄 이벤트 등록
+	각li요소에 onclick 이벤트를 기술하지 않는다.
+	</pre>
+	
+	<ul>
+		<li class="eli">국화</li>
+		<li class="eli">대나무숲</li>
+		<li class="eli">사자</li>
+		<li class="eli">아메리카노</li>
+	</ul>
+	
+</div>
+
+</body>
+</html>

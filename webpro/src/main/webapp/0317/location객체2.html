@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<script type="text/javascript">
+
+function proc1() {
+	location.href="test.jsp";
+}
+
+function proc2() {
+	location.href="test.jsp";
+}
+
+function goReplace(url) {
+	location.href= url;
+}
+
+function goReload(url) {
+	//result1에 랜덤으로 문자열을 출력하고
+	//3초 후에 변경되기 이전페이지로 다시 복귀한다.
+	
+	arr = ["Hello", "Bye", "Thank you", "JavaScript", "jQuery", "무궁화 꽃이 피었습니다"];
+	
+	ran = parseInt(Math.random() * arr.length);
+	
+	out = "<h2>" + arr[ran] + "</h2>";
+	
+	document.getElementById('result1').innerHTML = out;
+	document.getElementById('result1').style.color = 'pink';
+
+	window.setTimeout(function() {
+		location.reload();
+	}, 3000);
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+	<pre>
+	location객체 사용 방법
+	
+	script proc1 함수 내에서 location.href
+	a태그의 href에서 script함수 호출 : javascript:함수이름()
+	a태그의 onclick = 함수호출
+	get방식 button의 onclick
+	</pre>
+	
+	<input type="button" value="페이지이동" onclick="proc1()"><br><br>
+	
+	a태그이용 : href=script함수호출 <a href="javascript:proc2()">공지사항목록</a><br>
+	a태그이용 : onclick=script함수호출 <a href="#" onclick="proc2()">공지사항목록</a><br><br>
+	
+	get방식-button에서 onclick으로 location.href 수행<br> 
+	<input type="button" value="공지사항목록" onclick="location.href='test.jsp?id=a001'"><br><br>
+	
+	<strong>location.replace(url)</strong>
+	= 새로운 문서로 대체 <br>
+	<input type="button" value="공지사항목록" onclick="goReplace('test.jsp')"><br><br>
+	
+	<strong>location.reload()</strong> <br>
+	- 현재 문서를 다시 로드 <br>
+	- 페이지 실행 후 원래 페이지가 다시 로드 된다.
+	<button type="button" onclick="goReload()">공지사항목록</button>
+	<br>
+	<div id="result1"></div>
+</div>
+
+</body>
+</html>

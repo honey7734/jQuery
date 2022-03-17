@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+
+.box div{
+	height: 300px;
+	
+}
+
+#result1 div{
+	float: left;
+	border: 1px solid blue;
+	width: 200px;
+	height: 250px;
+}
+
+img{
+	width: 100%;
+	height: 70%;
+}
+
+p{
+	font-size: 1.2em;
+	text-align: center;
+	
+}
+</style>
+
+<script type="text/javascript">
+
+window.onload = function() {
+	vlis = document.getElementsByClassName('le');
+	
+	//이벤트 일괄 등록
+	for(i=0; i < vlis.length; i++){
+		vlis[i].addEventListener('click', addP);
+		//각 class=eli에서 click 이벤트가 발생하면 addImage함수를 호출한다.
+		//함수가 파라미터로 들어갈 경우는 ()를 붙이지 않는다. - this가 자동으로 넘어간다.
+	}
+}
+
+function addP() {
+	//this는 자동으로 넘어와서 사용가능 - 클릭한 대상의 객체
+
+	
+	ran = parseInt(Math.random() * 6 + 5);
+	
+	vtext = document.createTextNode("할인율" + ran + "%");
+	
+	vp = document.createElement('p');
+	
+	vp.appendChild(vtext);
+	
+	this.appendChild(vp);
+}
+
+
+	
+</script>
+</head>
+<body>
+
+<div class="box">
+	<pre>
+	파랑색 div를 클릭하면
+	랜덤을 5~10qkftod
+	할인율 택스트노드 생성
+	
+	p태그를 생성
+	p태그에 텍스트노드를 자식으로 추가
+	
+	p태그를 파랑색 div에 자식으로 추가
+	
+	클릭 이벤트를 각각div에 설정하지 않고
+	일괄 등록 방식으로 한다.
+	</pre>
+
+	<div id="result1">
+		<div class="le">
+			<img alt="" src="../images/가구1.jpg">
+		</div>
+		<div class="le">
+			<img alt="" src="../images/가구2.jpg">
+		</div>
+		<div class="le">
+			<img alt="" src="../images/가구3.jpg">
+		</div>
+		<div class="le">
+			<img alt="" src="../images/Sony1.jpg">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
