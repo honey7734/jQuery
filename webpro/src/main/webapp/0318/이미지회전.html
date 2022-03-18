@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+img{
+    width: 150px;
+	border-radius: 50%;
+}
+</style>
+<script type="text/javascript">
+function proc1(btn) {
+	//스타일로 설정된 테두리를 지운다.
+	//초깃값 변수를 지정후 null이 아닐때
+	
+	//시작버튼 감추기
+	btn.style.display = "none";
+	//result1을 검색
+	vres1 = document.getElemntById('result1');
+	
+	setInterval(function() { 
+		//첫번째 자식을 선택한다
+		child = vres1.firstChild;
+		vres1.appendChild(child);
+		
+	}, 1000)
+	
+}
+
+function stop() {
+	
+	//시작버튼 보이기
+	
+	//랜덤 발생- 0~이미지갯수만큼
+	
+	//랜덤 발생된 번째 자식의 테두리를 설정한다
+	//var div2Child = div2.getElementsByTagName("div");
+
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    result1의 첫번째 자식(img)을 선택한다 - firstChlid
+    선택한 자식을 맨 마지막 자식으로 추가한다 - appendChild()
+    
+    appendChild() 수행시 기존에 존재하는 요소를 대상으로 
+    작업시 이동의 효과가 있다. (잘라내기 - 붙어넣기)
+  </pre>
+  <input type="button" value="시작" onclick="proc1(this)">
+  <input type="button" value="종료" onclick="stop()">
+  
+  <div id="result1">  
+  	<img src="../images/식품2.jpg" alt="">  <!-- result1 . firstChild  > appendChild -->
+  	<img src="../images/가구1.jpg" alt="">
+  	<img src="../images/가구2.jpg" alt="">
+  	<img src="../images/가구3.jpg" alt="">
+  	<img src="../images/카푸치노.jpg" alt="">
+  	<img src="../images/딸기스무디.jpg" alt="">
+  	<img src="../images/식품1.jpg" alt="">
+  </div>
+  
+  
+</div>
+</body>
+</html>

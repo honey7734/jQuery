@@ -36,27 +36,30 @@ p{
 window.onload = function() {
 	vlis = document.getElementsByClassName('le');
 	
-	//이벤트 일괄 등록
 	for(i=0; i < vlis.length; i++){
 		vlis[i].addEventListener('click', addP);
-		//각 class=eli에서 click 이벤트가 발생하면 addImage함수를 호출한다.
-		//함수가 파라미터로 들어갈 경우는 ()를 붙이지 않는다. - this가 자동으로 넘어간다.
+		
 	}
 }
-
+vp = null;
 function addP() {
-	//this는 자동으로 넘어와서 사용가능 - 클릭한 대상의 객체
-
+	
+	if(vp != null){
+		vp.parentNode.removeChild(vp);
+	}
 	
 	ran = parseInt(Math.random() * 6 + 5);
 	
-	vtext = document.createTextNode("할인율" + ran + "%");
+	vtext = document.createTextNode("할인율 : " + ran + "%");
 	
 	vp = document.createElement('p');
 	
 	vp.appendChild(vtext);
 	
 	this.appendChild(vp);
+	
+	//click 이벤트 종료
+	this.removeEventListener('click', addP);
 }
 
 
