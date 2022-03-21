@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+//$(document).ready(function() {
+$(function() {
+	// 버튼을 클릭하면
+	$('#btn1').on('click',function(){
+		$('#result1').css('background','pink')
+		$('h1').css('color','blue')
+		$('#para').css('color','green')
+		$('.sample').css('color','red')
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    
+  </pre>
+  <input id="btn1" type="button" value="확인">
+  
+  <div id="result1">
+  	 <h1> 제목입니다 </h1>
+	 <h2 id="para"> 작은 제목입니다 </h2>
+	 <h2 class="sample"> 샘플입니다 </h2>
+  
+  </div>
+</div>
+</body>
+</html>

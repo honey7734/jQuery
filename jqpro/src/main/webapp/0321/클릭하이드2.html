@@ -10,7 +10,21 @@
 $(document).ready(function() {
 	$('h1').on('click', function() {
 		$(this).hide();
+		// 남은 h1요소가 있는가 ? - 보이는 h1이 있는지
+		// 없으면 버튼을 보이게 한다	
+		if($('h1:visible').length < 1){
+			$('#btn_show').show();
+		}
 	})
+	
+	$('#btn_show').on('click',function(){
+		$(this).hide();
+		//$('h1').css('display', 'block');
+		
+		$('h1').show();
+		//$('h1').css('display', 'none');
+	})
+	
 })
 </script>
 <style type="text/css">
