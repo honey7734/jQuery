@@ -19,16 +19,16 @@ $(function() {
 		$('#result1 :button').css('background', 'skyblue');
 		
 		//Type이 submit 요소의 배경색 녹색
-		$('#result1 :submit').css('background', 'green');
+		$(':submit').css('background', 'green');
 		
 		//Type이 reset인 요소의 배경색 노랑 
-		$('#result1 :reset').css('background', 'yellow');
+		$(':reset').css('background', 'yellow');
 		
 		//Type이 text, password 인 요소의 테두리 파랑
-		$('#result1 :text, #result1 :password').css('border', 'solid blue');
+		$(':text, :password').css('border', 'solid blue');
 		
 		//Type이 file, image인요소의 테두리 빨강
-		$('#result1 :file, #result1 :image').css('border', 'solid red');
+		$(':file, :image').css('border', 'solid red');
 
 	})
 })
