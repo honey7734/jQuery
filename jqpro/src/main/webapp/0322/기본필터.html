@@ -8,8 +8,7 @@
 <script type="text/javascript">
 $(function() {
 	$('#btn1').on('click', function() {
-		$('li:first').css('background', 'yellow');
-		$('li:last').css('background', 'yellow');
+		$('li:first, li:last').css('background', 'yellow');
 		$('li:eq(5)').css('background', 'red');
 		$('li:lt(4)').css('font-weight', 'bold');
 		
