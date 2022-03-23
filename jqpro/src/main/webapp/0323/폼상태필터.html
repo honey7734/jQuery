@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#btn3').on('click', function() {
+		str="봄소식 전령사들\n\n";
+		$('#result3 #spring option:selected').each(function(i) {
+			str += $(this).val() + "\n";
+		})
+		
+		alert(str);
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    
+  </pre>
+  <input id="btn3" type="button" value="확인">
+  
+  <div id="result3">
+  	<form>
+	봄소식 : <select name="spring" id="spring" multiple size="6">
+		<option  >개나리</option>
+		<option selected>진달래</option>
+		<option>민들레</option>
+		<option selected>벚꽃</option>
+		<option>목련</option>
+		<option>철쭉</option>
+	</select>
+	</form>
+  </div>
+</div>
+</body>
+</html>
