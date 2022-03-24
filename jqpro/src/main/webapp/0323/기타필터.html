@@ -44,6 +44,23 @@ $(function(){
 		
 	$('#result3').html(str);		
 	})
+	
+	$('#btn4').on('click', function() {
+		//this.tagName -> DOM에서 가져온 스크립트 속성 
+		
+		str = "** hidden객체 **<br>";
+		
+		$('#testForm :hidden').each(function(i) {
+			if(this.tagName  == "INPUT"){
+				str +=  $(this).attr('name') + " : " + $(this).val() + "<br>";
+			}else{
+				str += $(this).text() + "<br>";
+			}
+			
+		})
+		
+	$('#result4').html(str);		
+	})
 })
 </script>
 </head>
