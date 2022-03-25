@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('.btn1').on('click', function() {
+		//vbtn = $('<input id="btn1" type="button" value="확인">')
+		vbtn = $('<input>', {
+			'type' : 'button',
+			'value': '확인',
+			'class' : 'btn1'
+		})
+		
+		$(vbtn).appendTo($('#butadd'))
+	})
+	
+	$('#btn2').on('click', function() {
+		$('.btn1').off('click')
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    
+  </pre>
+  
+  <div class="result1">
+	  <input class="btn1" type="button" value="확인">
+  </div>
+	  <input id="btn2" type="button" value="취소">
+  <br><br>  
+  <div class="result1" id="butadd"></div>
+</div>
+</body>
+</html>
