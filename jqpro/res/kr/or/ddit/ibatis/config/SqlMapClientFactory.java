@@ -11,7 +11,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 public class SqlMapClientFactory {
 	
 	
-	public static SqlMapClient getSqlClient() {
+	public static SqlMapClient getSqlMapClient() {
 		SqlMapClient smc = null;
 		Reader rd = null;
 		try {

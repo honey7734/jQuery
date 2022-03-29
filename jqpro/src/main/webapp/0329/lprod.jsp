@@ -11,7 +11,7 @@
 //mapper-xml파일에 접근 - db수행
 //mapper-xml파일에 접근할 수 있는 객체가 필요 - sqlMapClient
 
-SqlMapClient client = SqlMapClientFactory.getSqlClient();
+SqlMapClient client = SqlMapClientFactory.getSqlMapClient();
 
 //mapper를 실행
 List<LprodVO> list = client.queryForList("lprod.selectAll");
