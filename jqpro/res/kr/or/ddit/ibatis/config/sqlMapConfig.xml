@@ -23,7 +23,8 @@
 	  	대신할 alias를 설정할 수 있다.
 	  	형식) <typeAlias alias="alias명" type="클래스의 전체이름"/>
 	  -->
-	   <typeAlias alias="member" type="kr.or.ddit.member.vo.MemberVO" />
+	   <typeAlias alias="memberVO" type="kr.or.ddit.member.vo.MemberVO" />
+	   <typeAlias alias="lprodVO" type="kr.or.ddit.lprod.vo.LprodVO" />
 	   
 	  <!-- DB와의 연결을 처리하는 부분 -->
 	  <transactionManager type="JDBC">
@@ -42,4 +43,5 @@
 	  	형식) <sqlMap resource="경로명/파일명.xml"/>
 	  -->
 	  <sqlMap resource="kr/or/ddit/ibatis/mapping/member.xml"/>
+	  <sqlMap resource="kr/or/ddit/ibatis/mapping/lprod.xml"/>
 </sqlMapConfig>

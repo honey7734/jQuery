@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#text').on('click', function() {
+		
+		$.get(
+			'../0328/text.jsp',
+			function(res) {
+				arr = res.split("/");
+				
+				str = "<ul>";
+				
+				$.each(arr, function(i,v) {
+					str += "<li>" + v + "</li>";	
+				})
+				
+				str += "</ul>";
+				
+				$('#result1').html(str);
+			},
+			'text'
+		)
+		
+		/* $.ajax({
+			url  : '../0328/text.jsp',
+			type : 'get',
+			success : function(res) {
+				arr = res.split("/");
+				
+				str = "<ul>";
+				
+				$.each(arr, function(i,v) {
+					str += "<li>" + v + "</li>";	
+				})
+				
+				str += "</ul>";
+				
+				$('#result1').html(str);
+			},
+			error : function(xhr) {
+				alert('상태 : ' + xhr.status);
+			},
+			dataType : 'text'
+		}) */
+	})
+	
+	$('#jarr').on('click', function() {
+		$.ajax({
+			url  : '../0328/jsonArr.jsp',
+			type : 'get',
+			success : function(res) {
+				str = "<ol>";
+				$.each(res, function(i, v) {
+					str += "<li>" + v +"</li>"
+				})
+				str += "</ol>"
+				
+				$('#result2').html(str);
+			},
+			error : function(xhr) {
+				alert('상태 : ' + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	
+	$('#jobj').on('click', function() {
+		$.get(
+			'../0328/jsonObj.jsp',	
+			function(res) {
+				str  = "아이디  : " + res.id + "<br>";
+				str += "이름    : " + res.name + "<br>";
+				str += "주소    : " + res.addr + "<br>";
+				str += "전화번호 : " + res.hp + "<br>";
+				
+				$('#result3').html(str);
+			},
+			'json'
+		)
+	})
+	
+	$('#jobarr').on('click', function() {
+		$.get(
+			'../0328/jsonObjArr.jsp',
+			function(res) {
+				str = "";
+				$.each(res, function(i,v) {
+					str += "아이디  : " + v.id + "<br>";
+					str += "이름    : " + v.name + "<br>";
+					str += "주소    : " + v.addr + "<br>";
+					str += "전화번호 : " + v.hp + "<br><br>";
+					
+					$('#result4').html(str);
+				})
+			},
+			'json'
+		)
+	})
+})
+</script>
+<style type="text/css">
+.box div{
+	width: 20%;
+	float: left;
+}
+br{
+	clear: both;
+}
+.box .d1{
+	width : 15%;
+}
+.dox .d2{
+	width : 25%;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+
+  </pre>
+  <input type="button" value="text" id="text">
+  <input type="button" value="jsonarr" id="jarr">
+  <input type="button" value="jsonobj" id="jobj">
+  <input  type="button" value="mixdata" id="jobarr">
+  <br>
+  <div class="d1" id="result1"></div>
+  <div class="d1" id="result2"></div>
+  <div class="d2" id="result3"></div>
+  <div class="d2" id="result4"></div>
+</div>
+</body>
+</html>
