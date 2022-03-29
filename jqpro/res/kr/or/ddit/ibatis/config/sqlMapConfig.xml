@@ -41,6 +41,5 @@
 	  	아래와 같이 등록하면 된다.
 	  	형식) <sqlMap resource="경로명/파일명.xml"/>
 	  -->
-	  <sqlMap resource="kr/or/ddit/ibatis/mapping/member.xml "/>
-	  
+	  <sqlMap resource="kr/or/ddit/ibatis/mapping/member.xml"/>
 </sqlMapConfig>
