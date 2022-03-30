@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#btn1').on('click', function() {
+		$.ajax({
+			url : '/jqpro/LprodServlet.do',
+			type : 'get',
+			success : function(res) {
+				str = "";
+				$.each(res, function(i,v) {
+					str += "<option value='"+ v.gu +"'>" + v.nm + "</option>"
+				})
+				$('#lprod').html(str);
+			},
+			error : function(xhr) {
+				alert('상태 : ' + xhr.status)
+			},
+			dataType : 'json'
+		})	
+	})
+	
+	//lprod를 선택하면 lprod_gu값을 얻어서 서버로 전송해 prod_id와 prod_name
+	$('#lprod').on('change', function() {
+		lgu = $('option:selected', this).val();
+	
+		$.ajax({
+			url : '/jqpro/ProdServlet.do',
+			data : {"lgu": lgu},
+			type : 'get',
+			success : function(res) {
+				str = "";
+				$.each(res, function(i,v) {
+					str += "<option value='"+ v.id +"'>" + v.name +"</option>"
+				})
+				$('#prod').html(str);
+			},
+			error : function(xhr) {
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+			
+		})
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    
+  </pre>
+  <input id="btn1" type="button" value="확인"><br><br>
+  <select id="lprod">
+  <!-- option이 들어갈 자리 -->
+  </select>
+  
+  <select id="prod">
+  
+  </select>
+  <div id="result1"></div>
+</div>
+</body>
+</html>

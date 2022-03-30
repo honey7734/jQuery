@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.ddit.buyer.service.BuyerServiceImpl;
+import kr.or.ddit.buyer.service.IBuyerService;
+import kr.or.ddit.buyer.vo.BuyerVO;
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
@@ -49,5 +52,7 @@ public class MemberServlet extends HttpServlet {
 		request.getRequestDispatcher("0329/memberList.jsp").forward(request, response);
 		
 	}
+	
+
 
 }
