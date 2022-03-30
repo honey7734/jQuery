@@ -6,16 +6,16 @@ import kr.or.ddit.buyer.dao.BuyerDaoImpl;
 import kr.or.ddit.buyer.dao.IBuyerDao;
 import kr.or.ddit.buyer.vo.BuyerVO;
 
-public class BuyerService implements IBuyerService {
+public class BuyerServiceImpl implements IBuyerService {
 
 	private IBuyerDao dao;
 	private static IBuyerService service;
-	private BuyerService() {
+	private BuyerServiceImpl() {
 		dao = BuyerDaoImpl.getInstance();
 	}
 	
 	public static IBuyerService getInstance() {
-		if(service == null) service = new BuyerService();
+		if(service == null) service = new BuyerServiceImpl();
 		
 		return service;
 	}

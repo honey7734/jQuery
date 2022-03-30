@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+$(function(){
+	$('#btn1').on('click', function() {
+		$.ajax({
+			url : '/jqpro/BuyerController.do',
+			type : 'get',
+			success : function(res) {
+				str = "";
+				$.each(res, function(i,v) {
+					str += "<p id='" + v.id + "'>" + v.name + "</p>" 
+				})
+				
+				$('#names').html(str);
+			},
+			error : function(xhr) {
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	
+	//bind
+	//delegate -> 나중에 생성된 것
+	
+	$('#names').on('click','p', function() {
+
+		
+		idvalue = $(this).attr('id')
+		
+		
+		$.ajax({
+			url : '/jqpro/BuyerController.do',
+			data : {'id' : idvalue},
+			type : 'post',
+			success : function(res) {
+				str  = "<table class='table table-hover'>";
+				str += "<tr><td>BUYER_ID</td>"
+				str += "<td>"+res.id+"</td></tr>"
+				
+				str += "<tr><td>BUYER_NAME</td>"
+				str += "<td>"+res.name+"</td></tr>"
+				
+				str += "<tr><td>BUYER_BANK</td>"
+				str += "<td>"+res.bank+"</td></tr>"
+				
+				str += "<tr><td>BUYER_BANKNO</td>"
+				str += "<td>"+res.bno+"</td></tr>"
+				
+				str += "<tr><td>BUYER_LGU</td>"
+				str += "<td>"+res.lgu+"</td></tr>"
+				
+				str += "<tr><td>BUYER_MAIL</td>"
+				str += "<td>"+res.mail+"</td></tr>"
+				
+				str += "<tr><td>BUYER_ZIP</td>"
+				str += "<td>"+res.zip+"</td></tr>"
+				
+				str += "<tr><td>BUYER_ADD1</td>"
+				str += "<td>"+res.add1+"</td></tr>"
+				
+				str += "<tr><td>BUYER_ADD2</td>"
+				str += "<td>"+res.add2+"</td></tr>"
+				
+				str += "</table>"
+			
+				$('#details').html(str)
+			},
+			error : function(xhr) {
+				alert('상태 : ' + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+})
+</script>
+<style type="text/css">
+p:hover{
+	background: lime;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <pre>
+    
+  </pre>
+  <input id="btn1" type="button" value="확인">
+  
+  <div id="result1">
+  	<table  class='table table-hover'>
+		<tr>
+		  <td>거래처이름</td>
+		  <td>거래처상세정보</td>
+		</tr>  	
+
+		<tr>
+		  <td id="names"></td>
+		  <td id="details"></td>
+		</tr>  	
+  	</table>
+  </div>
+</div>
+</body>
+</html>
