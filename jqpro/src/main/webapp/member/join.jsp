@@ -115,7 +115,7 @@
   <form class="needs-validation" novalidate>
     <div class="form-group">
       <label for="uid">아이디</label>
-        <button  id="idchk" class="btn btn-info mb-2 mr-sm-2">중복검사</button>
+        <button  type="button" id="idchk" class="btn btn-info mb-2 mr-sm-2">중복검사</button>
       <input type="text" class="form-control col-sm-3" id="uid" placeholder="Enter username" name="mem_id" required>
       <span id="idspan"></span>
       <div class="valid-feedback">Valid.</div>
@@ -162,7 +162,7 @@
       
       
       
-      <button id="zipsearch" class="btn btn-info mb-2 mr-sm-2">번호검색</button>
+      <button type="button" id="zipsearch" class="btn btn-info mb-2 mr-sm-2">번호검색</button>
       
       <button type="button" class="btn btn-info mb-2 mr-sm-2" data-toggle="modal" data-target="#myModal">번호검색modal</button>
       <!-- The Modal -->
@@ -199,14 +199,14 @@
       
       
       
-      <input type="text" class="form-control col-sm-3" id="zip" placeholder="" name="mem_post" required disabled>
+      <input type="text" class="form-control col-sm-3" id="zip" placeholder="" name="mem_post" required >
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="add1">주소</label>
-      <input type="text" class="form-control col-sm-5" id="add1" placeholder="" name="mem_addr" required readonly>
+      <input type="text" class="form-control col-sm-5" id="add1" placeholder="" name="mem_addr" required >
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
