@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.ddit.member.service.IMemberService;
+import kr.or.ddit.member.service.MemberServiceImpl;
+
 /**
  * Servlet implementation class IdCheck
  */
@@ -26,16 +29,25 @@ public class IdCheck extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		//1. 전송 데이터 받기
+		String input = request.getParameter("id");
+		
+		//2. service객체 생성
+		IMemberService service = MemberServiceImpl.getInstance();
+		
+		//3. service메소드 호출 - 결과값 받기(mem_id)
+		String id = service.idCheck(input);
+		//결과값은 a001->a001, k123 -> null
+		
+		
+		//4. request에 저장
+		request.setAttribute("idresult", id);
+		
+		//5. JSP로 forward
+		request.getRequestDispatcher("member/idcheck.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
 
 }
