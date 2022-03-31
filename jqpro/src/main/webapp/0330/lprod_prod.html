@@ -48,9 +48,10 @@ $(function(){
 					})
 				}else{
 					str += "<option value='0'>데이터 없음</option>"
-				    $('#result1').empty()
+				    /* $('#result1').empty() */
 				}
 				$('#prod').html(str);
+				$('#prod').trigger('change');
 			},
 			error : function(xhr) {
 				alert("상태 : " + xhr.status);
