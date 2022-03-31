@@ -9,4 +9,65 @@
 		select * from member
 	</select>
 	
+	<!-- id중복검사 -->
+	<select id="idCheck" resultClass="string" parameterClass="string">
+		select mem_id from member where mem_id= #data#
+	</select>
+	
+	<!-- update로 insert하기 결과값이 1이 나오게 된다! -->
+	<!-- <update id="insertMember" parameterClass="memberVO">
+		insert into member(
+			mem_id,
+			mem_pass,
+			mem_name,
+			mem_bir,
+			mem_zip,
+			mem_add1,
+			mem_add2,
+			mem_hp,
+			mem_mail
+			)
+    	values(
+    		#mem_id",
+    		#mem_pass#,
+    		#mem_name#,
+    		#mem_bir#,
+    		#mem_zip#,
+    		#mem_add1#,
+    		#mem_add2#,
+    		#mem_hp#,
+    		#mem_mail#
+    	);
+	</update> -->
+	
+	
+	<!-- 저장하기 -->
+	<insert id="insertMember" parameterClass="memberVO">
+		insert into member(
+			mem_id,
+			mem_pass,
+			mem_name,
+			mem_bir,
+			mem_zip,
+			mem_add1,
+			mem_add2,
+			mem_hp,
+			mem_mail
+			)
+    	values(
+    		#mem_id",
+    		#mem_pass#,
+    		#mem_name#,
+    		#mem_bir#,
+    		#mem_zip#,
+    		#mem_add1#,
+    		#mem_add2#,
+    		#mem_hp#,
+    		#mem_mail#
+    	);
+    	<!-- null이 아닌 mem_id가 리턴된다 -->
+    	<selectKey keyProperty="mem_id" resultClass="String">
+    		select mem_id from member where mem_id = #mem_id#
+    	</selectKey>
+	</insert>
 </sqlMap>

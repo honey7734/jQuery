@@ -12,7 +12,30 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript">
   	$(function() {
-		$('#idchk').on('click', function() {
+  		
+  		//아이디 중복체크
+		$('#idchk).on('click', function() {
+			event.preventDefault();
+			//입력한 값을 가져온다
+			idvalue = $('#uid').val();
+			
+			//서버로 전송
+			$.ajax({
+				url : '<%=request.getContextPath()%>/IdCheck.do',
+				type : 'get',
+				data : {'id' : idvalue},
+				success : function(res) {
+					
+				},
+				error : function(xhr) {
+					
+				},
+				dataType : 'json'
+			})
+		})
+		
+		//우편번호 검색
+		$('#zipsearch').on('click', function() {
 			event.preventDefault();
 		})
 	})
@@ -21,68 +44,69 @@
 <body>
 
 <div class="container">
-  <h2>회원가입</h2>
+  <h2>회원가입</h2><br>
   <form class="needs-validation" novalidate>
     <div class="form-group">
       <label for="uid">아이디</label>
-        <button  id="idchk" class="btn btn-outline-primary">중복검사</button>
-      <input type="text" class="form-control" id="uid" placeholder="Enter username" name="mem_id" required>
+        <button  id="idchk" class="btn btn-info mb-2 mr-sm-2">중복검사</button>
+      <input type="text" class="form-control col-sm-3" id="uid" placeholder="Enter username" name="mem_id" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="uname">이름</label>
-      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="mem_name" required>
+      <input type="text" class="form-control col-sm-3" id="uname" placeholder="Enter username" name="mem_name" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="udate">생년월일</label>
-      <input type="date" class="form-control" id="udate" placeholder="1999 04 15" name="mem_date" required>
+      <input type="date" class="form-control col-sm-3" id="udate" placeholder="1999 04 15" name="mem_date" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="pwd">비밀번호</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mem_pass" required>
+      <input type="password" class="form-control col-sm-3" id="pwd" placeholder="Enter password" name="mem_pass" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
 
     <div class="form-group">
       <label for="utel">휴대폰번호</label>
-      <input type="tel" class="form-control" id="utel" placeholder="010-1234-5678" name="mem_tel" required>
+      <input type="tel" class="form-control col-sm-3" id="utel" placeholder="010-1234-5678" name="mem_tel" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="email">이메일</label>
-      <input type="email" class="form-control" id="email" placeholder="abcd123@email.com" name="mem_email" required>
+      <input type="email" class="form-control col-sm-3" id="email" placeholder="abcd123@email.com" name="mem_email" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="post">우편번호</label>
-      <input type="text" class="form-control" id="post" placeholder="" name="mem_post" required>
+      <button id="zipsearch" class="btn btn-info mb-2 mr-sm-2">번호검색</button>
+      <input type="text" class="form-control col-sm-3" id="post" placeholder="" name="mem_post" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="addr">주소</label>
-      <input type="text" class="form-control" id="addr" placeholder="" name="mem_addr" required>
+      <input type="text" class="form-control col-sm-5" id="addr" placeholder="" name="mem_addr" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="addr2">상세주소</label>
-      <input type="text" class="form-control" id="addr2" placeholder="" name="mem_addr2" required>
+      <input type="text" class="form-control col-sm-5" id="addr2" placeholder="" name="mem_addr2" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
@@ -95,7 +119,7 @@
       </label>
     </div>
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
   </form>
 </div>
 
