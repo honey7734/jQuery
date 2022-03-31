@@ -23,6 +23,7 @@ $(function(){
 					str += "<option value='"+ v.gu +"'>" + v.nm + "</option>"
 				})
 				$('#lprod').html(str);
+				$('#lprod').trigger('change');
 			},
 			error : function(xhr) {
 				alert('상태 : ' + xhr.status)
@@ -131,13 +132,37 @@ $(function(){
     
   </pre>
   <input id="btn1" type="button" value="확인"><br><br>
-  <select id="lprod">
-  <!-- option이 들어갈 자리 -->
+  
+  
+  
+  
+<div class="container">
+  <h2>lprod_prod</h2>
+  
+  <form>
+    <div class="form-group">
+      <label for="lprod">lprod list</label>
+      <select class="form-control" id="lprod" name="sellist1">
+       
+      </select>
+      <br>
+      <label for="prod">prod list</label>
+      <select class="form-control" id="prod" name="sellist2">
+        
+      </select>
+    </div>
+  </form>
+  
+</div>
+
+
+ <!--  <select id="lprod">
+  option이 들어갈 자리
   </select>
   
   <select id="prod">
   
-  </select>
+  </select> -->
   <div id="result1"></div>
 </div>
 </body>
