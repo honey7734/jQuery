@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="zips">
+	<select id="selectSido" resultClass="string">
+		select distinct sido from ziptb
+	</select>
+	
+	<select id="selectGugun" resultClass="string" parameterClass="String">
+		select distinct gugun from ziptb where sido = #sido#
+	</select>
+	
+	<select id="selectDong" resultClass="string" parameterClass="map">
+		select distinct dong from ziptb where sido = #sido# and gugun=#gugun#
+	</select>
+	
+	<select id="selectZiptb" resultClass="zipsVO" parameterClass="map">
+		select * from ziptb where sido=#sido# and gugun=#gugun# and dong=#dong#
+	</select>
+</sqlMap>
