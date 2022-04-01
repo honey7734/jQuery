@@ -64,7 +64,7 @@
     		#mem_add2#,
     		#mem_hp#,
     		#mem_mail#
-    	);
+    	)
     	<!-- null이 아닌 mem_id가 리턴된다 -->
     	<selectKey keyProperty="mem_id" resultClass="String">
     		select mem_id from member where mem_id = #mem_id#

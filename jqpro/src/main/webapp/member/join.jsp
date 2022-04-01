@@ -10,6 +10,8 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery.serializejson.min.js">
+  </script>
   <script type="text/javascript">
   	$(function() {
   		
@@ -94,7 +96,32 @@
 	})
 		
 		
+	$('form').on('submit', function() {
+		//입력한 모든 값을 가져온다
+	
+		fdata1 = $('form').serialize();
+		fdata2 = $('form').serializeArray();
+		fdata3 = $('form').serializeJSON()
+		console.log(fdata1)
+		console.log(fdata2)
+		console.log(fdata3)
 		
+ 		$.ajax({
+			url : '<%=request.getContextPath()%>/Insert.do',
+			data : fdata3,
+			type : 'post',
+			success : function(res) {
+				//alert(res.flag)
+				$('#joinspan').html(res.flag).css('color', 'red')
+			},
+			error : function(xhr) {
+				alert("상태 : " + xhr.status)
+			},
+			dataType : 'json'
+		})
+		return false;
+ 		
+	})		
 		
 		
 	})
@@ -129,12 +156,6 @@
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
-    <div class="form-group">
-      <label for="udate">생년월일</label>
-      <input type="date" class="form-control col-sm-3" id="udate" placeholder="1999 04 15" name="mem_date" required>
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
-    </div>
     
     <div class="form-group">
       <label for="pwd">비밀번호</label>
@@ -144,15 +165,22 @@
     </div>
 
     <div class="form-group">
+      <label for="udate">생년월일</label>
+      <input type="date" class="form-control col-sm-3" id="bir" placeholder="1999 04 15" name="mem_bir" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    
+    <div class="form-group">
       <label for="utel">휴대폰번호</label>
-      <input type="tel" class="form-control col-sm-3" id="utel" placeholder="010-1234-5678" name="mem_tel" required>
+      <input type="tel" class="form-control col-sm-3" id="utel" placeholder="010-1234-5678" name="mem_hp" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="email">이메일</label>
-      <input type="email" class="form-control col-sm-3" id="email" placeholder="abcd123@email.com" name="mem_email" required>
+      <input type="email" class="form-control col-sm-3" id="email" placeholder="abcd123@email.com" name="mem_mail" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
@@ -199,26 +227,27 @@
       
       
       
-      <input type="text" class="form-control col-sm-3" id="zip" placeholder="" name="mem_post" required >
+      <input type="text" class="form-control col-sm-3" id="zip" placeholder="" name="mem_zip" required >
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="add1">주소</label>
-      <input type="text" class="form-control col-sm-5" id="add1" placeholder="" name="mem_addr" required >
+      <input type="text" class="form-control col-sm-5" id="add1" placeholder="" name="mem_add1" required >
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <div class="form-group">
       <label for="add2">상세주소</label>
-      <input type="text" class="form-control col-sm-5" id="add2" placeholder="" name="mem_addr2" required>
+      <input type="text" class="form-control col-sm-5" id="add2" placeholder="" name="mem_add2" required>
       <div class="valid-feedback">Valid.</div>
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     
     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <span id="joinspan"></span>
   </form>
 </div>
 
