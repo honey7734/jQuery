@@ -52,6 +52,13 @@ $(function() {
 </script>
 </head>
 <body>
+<div class="container">
+  <h2>게시판</h2>
+  <div id="accordion">
+  <!-- card삽입 위치 -->
+  </div>
+</div>
+
 
 </body>
 </html>
