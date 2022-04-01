@@ -16,6 +16,6 @@
 	</select>
 	
 	<select id="selectZiptb" resultClass="zipsVO" parameterClass="map">
-		select * from ziptb where sido=#sido# and gugun=#gugun# and dong=#dong#
+		select * from ziptb where sido=#sido# and gugun=#gugun# and dong like #dong# || '%'
 	</select>
 </sqlMap>

@@ -112,7 +112,7 @@ $(function() {
 				str = "";
 				$.each(res, function(i,v) {
 					if(v.bunji == undefined) v.bunji =""
-					str += "<p id='" + v.zipcode + "'>" + v.zipcode + " " + v.sido + " " + v.gugun + " " + v.dong + " " + v.bunji + "</p>"
+					str += "<p>" + v.zipcode + " " + v.sido + " " + v.gugun + " " + v.dong + " " + v.bunji + "</p>"
 				})
 					
 				$('#result').html(str);

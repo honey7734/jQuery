@@ -3,8 +3,10 @@ package kr.or.ddit.zip.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -99,9 +101,17 @@ public class ZipController extends HttpServlet {
 		IZipService service = ZipServiceImpl.getInstance();
 		
 		List<String> list = service.selectDong(map);
+		Set<String> list2 = new HashSet<String>();
+		
+		for(int i=0; i<list.size(); i++) {
+			String dv = list.get(i);
+			String[] arr = dv.split(" ");
+			list2.add(arr[0]);
+		}
+		
 		
 		Gson gson = new Gson();
-		String result = gson.toJson(list);
+		String result = gson.toJson(list2);
 		
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
