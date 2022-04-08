@@ -26,7 +26,7 @@
  		]]>
 	</select>
 	
-	<select id="totalCount" resultClass="int">
+	<select id="totalCount" parameterClass="map" resultClass="int">
 	 	select count(*) from board1
         <include refid="dynamicCondition"/>
 	</select>
