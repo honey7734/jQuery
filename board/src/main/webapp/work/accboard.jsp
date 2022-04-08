@@ -34,17 +34,60 @@
   	height: 55px;
   	vertical-align: top;
   }
+  .container{
+  	margin-top: 20px;
+  }
+  h1{
+  	margin-left: 20px;
+  }
 </style>
 <script type="text/javascript">
+currentPage = 1
+
 $(function() {
 	$.ajax({
 		url : '<%=request.getContextPath()%>/List.do',
-		type : 'get',
+		type : 'post',
+		data : {"page" : currentPage},
 		success : function(res) {
+			code = '<div id="accordion">';
 			
+			$.each(res, function(i,v) {
+			code += '<div class="card">'
+			code += '   <div class="card-header">'
+			code += '     <a class="card-link" data-toggle="collapse" href="#collapse'+ v.num +'">'
+			code += v.subject + '</a>'
+			code += '   </div>'
+			code += '   <div id="collapse'+ v.num +'" class="collapse" data-parent="#accordion">'
+			code += '     <div class="card-body">'
+			code += '		<p class="p1">'
+			code += '		  작성자 : '+ v.writer +'&nbsp;&nbsp;&nbsp;'
+			code += '		  이메일 : '+ v.mail +'&nbsp;&nbsp;&nbsp;'
+			code += '		  날짜 : '+ v.wdate +' &nbsp;&nbsp;&nbsp;'
+			code += '		  조회수 : '+ v.hit +'&nbsp;&nbsp;&nbsp;'
+			code += '		 </p>'
+			code += '		<p class="p2">'
+			code += '			<input type="button" class="action" name="modify" value="수정">'
+			code += '			<input type="button" class="action" name="delete" value="삭제">'
+			code += '		</p>'
+			code += '		<hr>'
+			code += '		<p class="p3">'
+			code += v.content;
+			code += '		</p>'
+			code += '		<p class="p4">'
+			code += '		  <textarea rows="" cols="80"></textarea>'
+			code += '		  <input type="button" class="action" name="reply" value="등록">'
+			code += '		</p>'
+			code += '     </div>'
+			code += '   </div>'
+			code += ' </div>'
+			})
+			code += '</div>'
+			
+			$('.container').html(code);
 		},
 		error : function(xhr) {
-			
+			alert("상태 : " + xhr.status)
 		},
 		dataType : 'json'
 	})
@@ -52,11 +95,9 @@ $(function() {
 </script>
 </head>
 <body>
+<h1>accordian 게시판</h1><br>
 <div class="container">
-  <h2>게시판</h2>
-  <div id="accordion">
-  <!-- card삽입 위치 -->
-  </div>
+  
 </div>
 
 

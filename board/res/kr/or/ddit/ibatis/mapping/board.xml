@@ -4,27 +4,31 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="board">
 
-	<select id="selectAll">
-		select * from board1 order by num desc
+	<sql id ="dynamicCondition">
+		<dynamic prepend=" where">
+			<isNotEmpty property="stype" prepend=" and ">
+				<isNotEmpty property="sword">
+					$stype$ like #sword# || '%'
+				</isNotEmpty>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	<select id="selectBoard" parameterClass="map" resultClass="boardVO">
+	select A.* from (
+    	select rownum as rnum, B.*  from (
+         select * from board1 
+         <include refid="dynamicCondition"/>
+         order by num desc) B
+     <![CDATA[
+     where rownum <= #end#) A 
+ 	where A.rnum >= #start#
+ 		]]>
 	</select>
 	
-	<!-- 5개의 게시글만 가져오는 메소드 -->
-	<select id="selectBoardList">
-		select rownum as rnum, B.*  from (
-         	select * from board1 order by num desc) B
-    	<![CDATA[where rownum <= 5 ]]>
-	</select>
-	
-	<!-- 그중 rum이 1이상 부터 5개의 게시글 받아오기 -->
-	<select id="selectBoardList2">
-		select A.* from (
-      select rownum as rnum, B.*  from (
-          select * from board1 
-          order by num desc) B
-   <![CDATA[
-      where rownum <= 5) A 
-   where A.rnum >=1
-  ]]>
+	<select id="totalCount" resultClass="int">
+	 	select count(*) from board1
+        <include refid="dynamicCondition"/>
 	</select>
 	
 </sqlMap>
