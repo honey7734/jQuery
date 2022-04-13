@@ -9,8 +9,6 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 public class SqlMapClientFactory {
-	
-	
 	public static SqlMapClient getSqlMapClient() {
 		SqlMapClient smc = null;
 		Reader rd = null;
@@ -18,15 +16,24 @@ public class SqlMapClientFactory {
 			Charset charset = Charset.forName("utf-8");
 			Resources.setCharset(charset);
 			
-			rd = Resources.getResourceAsReader("kr/or/ddit/ibatis/config/sqlMapConfig.xml");
+			rd = Resources.getResourceAsReader(
+					"kr/or/ddit/ibatis/config/sqlMapConfig.xml");
+			
 			smc = SqlMapClientBuilder.buildSqlMapClient(rd);
 			
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
-			if(rd!=null)try { rd.close(); } catch(IOException e){}
+			if(rd!=null) try { rd.close(); }catch(IOException e) {}
 		}
-		
 		return smc;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
