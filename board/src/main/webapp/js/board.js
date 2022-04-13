@@ -1,31 +1,85 @@
 /**
  * 
  */
-var replyList = function(){
+var replyUpdate = function(){
+	$.ajax({
+		url : '/board/ReplyUpdate.do',
+		type : 'get',
+		data : {
+			"renum" : actionIdx
+		},
+		success : function(res){
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType:'json'
+	})	
+}
+
+var replyDelete = function(target){
+	$.ajax({
+		url : '/board/ReplyDelete.do',
+		type : 'get',
+		data : {
+			"renum" : actionIdx
+		},
+		success : function(res){
+			//alert(res.sw);
+			//화면에서 지우기
+			$(target).parents('.rcode').remove();
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType:'json'
+	})
+} 
+ 
+ 
+var replyList = function(target){
+	// target변수는 등록버튼 또는 제목의 a태그
 	
 	$.ajax({
-		url :'',
-		type : '',
-		data : { },
+		url :'/board/ReplyList.do',
+		type : 'get',
+		data : { 
+			"bonum" : actionIdx
+		},
 		success : function(res){
 		  rcode= "";
+		  
+		  $.each(res, function(i,v){
+		   	  rcode += '     <div class="rcode">';
+		   	  rcode += '       <p class="p1">';
+		   	  rcode += '         작성자 : ' + v.name + '&nbsp;&nbsp;&nbsp;';
+		   	  rcode += '         날짜 : ' + v.redate + '&nbsp;&nbsp;&nbsp;';
+		   	  rcode += '       </p>';
+		   	  rcode += '       <p class="p2">';
+		   	  rcode += '         <input idx="' + v.renum + '" type="button" class="action" name="r_modify" value="댓글수정">';
+		   	  rcode += '         <input idx="' + v.renum + '" type="button" class="action" name="r_delete" value="댓글삭제">';
+		   	  rcode += '       </p>';
+		   	  rcode += '       <hr>';
+		   	  rcode += '       <p class="p3">';
+		   	  rcode += v.cont.replace(/\r/g,"").replace(/\n/g,"<br>");
+		   	  	// //g는 global 즉 모든을 의미한다 
+		   	  rcode += '       </p>';
+		   	  rcode += '     </div>';
+		   	  
+		   	  
+		   	  
+		   	  //parents는 조상 parent는 부모 find는 자식을 찾을 때
+		   	  cardbody = $(target).parents('.card').find('.card-body');
+		   	  
+		   	  cardbody.find('.rcode').remove();
+		   	  cardbody.append(rcode);
+		   	  
+		  })
 			
-	   rcode += '     <div class="card-body rcode">';
-	   rcode += '       <p class="p1">';
-	   rcode += '         작성자 : ' + v.writer + '&nbsp;&nbsp;&nbsp;';
-	   rcode += '         이메일 : ' + v.mail + '&nbsp;&nbsp;&nbsp;';
-	   rcode += '         날짜 : ' + v.wdate + '&nbsp;&nbsp;&nbsp;';
-	   rcode += '         조회수 : ' + v.hit + '&nbsp;&nbsp;&nbsp;';
-	   rcode += '       </p>';
-	   rcode += '       <p class="p2">';
-	   rcode += '         <input idx="' + v.num + '" type="button" class="action" name="modify" value="수정">';
-	   rcode += '         <input idx="' + v.num + '" type="button" class="action" name="delete" value="삭제">';
-	   rcode += '       </p>';
-	   rcode += '       <hr>';
-	   rcode += '       <p class="p3">';
-	   rcode += v.content;
-	   rcode += '       </p>';
-	   rcode += '     </div>' 	
+	   	
+	    
+	    	
 		},
 		error : function(xhr){
 			
@@ -40,7 +94,7 @@ var replyList = function(){
 		
 			
 }
- var replyInsert = function(){
+ var replyInsert = function(target){
 	$.ajax({
 		url : '/board/ReplyInsert.do',
 		type : 'post',
@@ -48,7 +102,7 @@ var replyList = function(){
 		success : function(res){
 			alert(res.sw);
 			//댓글 출력
-			//replyList(); 
+			replyList(target); 
 			
 		},
 		error : function(xhr){
@@ -114,7 +168,7 @@ var replyList = function(){
 		   
 		   $.each(res.datas, function(i, v){ 
 		   code += '<div class="card">';
-		   code += '   <div class="card-header">';
+		   code += '   <div class="card-header action" name="title" idx="'+ v.num +'">';
 		   code += '     <a class="card-link" data-toggle="collapse" href="#collapse' + v.num + '">';
 		   code += v.subject +'</a>';
 		   code += '   </div>';

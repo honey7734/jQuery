@@ -61,6 +61,15 @@
      float : left;
      width : 100px;
   }
+  .rcode{
+  	background: pink;
+  	margin: 2px;
+  	padding: 3px;
+  	border: 1px solid lightgray;
+  }
+  #modifyForm{
+  	display: none;
+  }
   
  </style>
 
@@ -113,7 +122,7 @@ $(function(){
 	
 	
 	//수정, 삭제 , 등록 버튼 이벤트 
-	//댓글삭제, 댓글 수정 
+	//댓글삭제, 댓글 수정 , 제목 
 	$('.container').on('click', '.action', function(){
 		actionName =  $(this).attr('name');
 		actionIdx  = $(this).attr('idx');
@@ -147,10 +156,81 @@ $(function(){
 			reply.name= name;
 			reply.bonum = actionIdx;
 			
-			replyInsert();
+			replyInsert(this);
+			$(this).prev().val("");
 			
+		}else if(actionName == "title"){
+			alert(actionIdx + "번의 댓글을 출력합니다");
+		
+			replyList(this);
+		}else if(actionName == "r_delete"){
+			alert(actionIdx + "번 댓글을 삭제합니다")
+		
+			replyDelete(this);
+
+		}else if(actionName == "r_modify"){
+			alert(actionIdx + "번 댓글을 수정합니다")
 			
+			//댓긇 수정폼의 css속성값을 가져온다
+			if($('#modifyForm').css('display') != "none"){
+				//다른곳에 수정폼이 이미 열려 있다
+				//수정폼을 body로 다시 append
+				//원래 내용을 원래 위치로 환원
+				replyReset();	
+			}
+			
+			//원래 내용(수정할 내용) 가져오기 - <br>태그가 포함
+			p3cont = $(this).parents('.rcode').find('.p3').html();
+			
+			//\n으로 변경
+			p3temp = p3cont.replace(/<br>/g, "\n");
+			
+			$('#modifyForm textarea').val(p3temp);
+			
+			$(this).parents('.rcode').find('.p3').empty().append($('#modifyForm'))
+			$('#modifyForm').show();
 		}
+	})
+	
+	function replyReset() {
+		//p3찾기
+		vp3 = $('#modifyForm').parent();
+		
+		//수정폼을 다시 body로 이등 후 감추기
+		$('body').append($('#modifyForm'));
+		$('#modifyForm').hide();
+		
+		//원래 데이터 환원
+		vp3 = $(vp3).html(p3cont);
+	}
+	
+	//댓글 수정창에서 취소버튼 클릭 이벤트
+	$('#btnreset').on('click', function() {
+		replyReset();
+	})
+	
+	
+	//댓글 수정창에서 확인버튼 클릭 이벤트
+	$('#btnok').on('click', function() {
+		//수정입력 내용 가져오기 - \r\n이 포함되어있다.
+		modiCont = $('#modifyForm textarea').val();
+		
+		//환원할 위치 = p3
+		vp3 = $('#modifyForm').parent();
+		
+		//수정폼을 body로 이동, 감추기
+		$('body').append($('#modifyForm'))
+		$('#modifyForm').hide();
+		
+		//modiCont내용을 <br>태그로 바뀌서 p3위치에 출력표시
+		modiShow = modiCont.replace(/\r/g,"").replace(/\n/g, "<br>");
+		
+		//vp3.html(modiShow);
+		
+		//db에서 수정 - 
+		reply.renum = actionIdx;
+		reply.cont = modiCont;
+		replyUpdate();
 	})
 	
 })
@@ -159,6 +239,17 @@ $(function(){
 
 </head>
 <body>
+	
+	<!-- 기존에 있는 것을 옮기는 것? => append 
+		append는 짤라서 붙여넣기를 해준다 -->
+	
+  <div id="modifyForm">
+  	<textarea rows="3" cols="30"></textarea>
+  	<input type="button" value="확인" id="btnok">
+  	<input type="button" value="취소" id="btnreset">
+  </div>
+  
+  
   <h1>accordian 게시판</h1>
   <br>
   <br>

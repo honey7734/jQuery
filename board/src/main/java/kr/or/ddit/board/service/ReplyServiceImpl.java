@@ -29,8 +29,13 @@ public class ReplyServiceImpl  implements IReplyService{
 	
 	@Override
 	public int updateReply(ReplyVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		try {
+			res = dao.updateReply(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return res;
 	}
 
 	@Override

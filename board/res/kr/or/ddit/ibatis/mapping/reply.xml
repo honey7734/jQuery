@@ -31,6 +31,15 @@
          where bonum= #data#
   </select>
   
+  <delete id="deleteReply" parameterClass="int">
+  	  delete from reply where renum = #data#
+  </delete>
+  
+  <update id="updateReply" parameterClass="replyVO">
+  	update reply 
+  	set 
+  		cont = #cont#
+  </update>
   
 </sqlMap>
 
