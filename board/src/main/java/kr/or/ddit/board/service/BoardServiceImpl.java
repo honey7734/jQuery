@@ -129,6 +129,20 @@ public class BoardServiceImpl  implements IBoardService{
 		
 		return res;
 	}
+
+
+
+	@Override
+	public int updateHit(int num) {
+		int res = 0;
+		
+		try {
+			res = dao.updateHit(num);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 }
 
 

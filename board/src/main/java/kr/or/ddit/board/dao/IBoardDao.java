@@ -13,11 +13,13 @@ public interface IBoardDao {
      selectList(Map<String, Object> map) 
     		       throws SQLException;
   
-  //전체 글갯수 가져오기 
-   public int totalCount(Map<String, String> map)
-		   throws SQLException;
+  	//전체 글갯수 가져오기 
+   	public int totalCount(Map<String, String> map)
+   			throws SQLException;
 
-   //글삭제 
-   public int deleteBoard(int num) throws SQLException ;
+   	//글삭제 
+   	public int deleteBoard(int num) throws SQLException ;
 
+   	//조회수 증가
+   	public int updateHit(int num) throws SQLException;
 }

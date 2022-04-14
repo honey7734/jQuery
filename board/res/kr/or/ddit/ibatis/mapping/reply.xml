@@ -38,7 +38,10 @@
   <update id="updateReply" parameterClass="replyVO">
   	update reply 
   	set 
-  		cont = #cont#
+  		cont = #cont#,
+  		redate = sysdate
+  	where
+  		renum = #renum#
   </update>
   
 </sqlMap>

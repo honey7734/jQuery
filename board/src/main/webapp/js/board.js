@@ -1,14 +1,79 @@
 /**
  * 
  */
+
+/*
+각자 해보시오
+var boardWrite = function(){
+	data : $('#ff').serializeJson(),
+	success : function(){
+		성공하면
+		listServer(1);
+	}	
+}*/
+
+/*var boardUpdate = function(){
+	$.ajax({
+		url : "/board/BoardUpdate.do",
+		type : "post",
+		data : board, //content, mail, subject, num
+		success : function(res){
+			//화면을 바꾼다
+			if(res.sw){
+				cont = cont.replace(/\r/g, "").replace(/\n/g, "<br>");
+			
+				$(bcard).find('a').text(sub);
+				$(bcard).find('.bwr').text(wr);
+				$(bcard).find('.bma').text(mail);
+				$(bcard).find('.p3').html(cont);
+			
+				//창닫기
+				$('#modiModal').modal('hide');
+			}
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType:'json'
+	})
+} */
+ 
+var readHit = function(target){
+	$.ajax({
+		url : "/board/HitUpdate.do",
+		type : "get",
+		data : {
+			"num" : actionIdx
+		},
+		success : function(res){
+			//DB에서 성공하면 화면 수정
+			if(res.sw == "성공"){
+				hit = $(target).parents('.card').find('.bhit');
+				
+				vhit = parseInt($(hit).text()) + 1
+				
+				$(hit).text(vhit);
+			}
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType:'json'
+	})
+}
+ 
 var replyUpdate = function(){
 	$.ajax({
 		url : '/board/ReplyUpdate.do',
-		type : 'get',
-		data : {
-			"renum" : actionIdx
-		},
+		type : 'post',
+		data : reply,	//cont, renum
 		success : function(res){
+			alert(res.sw);
+			if(res.sw == "성공"){
+				//성공 했으면 화면에서 삭제
+				vp3.html(modiShow);			
+			}
 			
 		},
 		error : function(xhr){
@@ -175,13 +240,13 @@ var replyList = function(target){
 		   code += '   <div id="collapse' + v.num + '" class="collapse" data-parent="#accordion">';
 		   code += '     <div class="card-body">';
 		   code += '       <p class="p1">';
-		   code += '         작성자 : ' + v.writer + '&nbsp;&nbsp;&nbsp;';
-		   code += '         이메일 : ' + v.mail + '&nbsp;&nbsp;&nbsp;';
-		   code += '         날짜 : ' + v.wdate + '&nbsp;&nbsp;&nbsp;';
-		   code += '         조회수 : ' + v.hit + '&nbsp;&nbsp;&nbsp;';
+		   code += '         작성자 : <span class="bwr">' + v.writer + '</span>&nbsp;&nbsp;&nbsp;';
+		   code += '         이메일 : <span class="bma">' + v.mail + '</span>&nbsp;&nbsp;&nbsp;';
+		   code += '         날짜 : <span class="bda">' + v.wdate + '</span>&nbsp;&nbsp;&nbsp;';
+		   code += '         조회수 : <span class="bhit">' + v.hit + '</span>&nbsp;&nbsp;&nbsp;';
 		   code += '       </p>';
 		   code += '       <p class="p2">';
-		   code += '         <input idx="' + v.num + '" type="button" class="action" name="modify" value="수정">';
+		   code += '         <input idx="' + v.num + '" type="button" class="action" name="modify" value="수정"  data-toggle="modal" data-target="#modiModal" >';
 		   code += '         <input idx="' + v.num + '" type="button" class="action" name="delete" value="삭제">';
 		   code += '       </p>';
 		   code += '       <hr>';

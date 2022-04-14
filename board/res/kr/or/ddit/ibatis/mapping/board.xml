@@ -46,6 +46,9 @@
         where num = #data#
   </delete>
 
+  <update id="updateHit" parameterClass="int">
+  		update board1 set hit = hit + 1 where num = #data#
+  </update>
 </sqlMap>
 
 
